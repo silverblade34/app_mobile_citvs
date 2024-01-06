@@ -13,7 +13,7 @@ class ButtonGlobal extends StatelessWidget {
         alignment: Alignment.center,
         height: 55,
         decoration: BoxDecoration(
-            color: GlobalColors.mainColor,
+            color: Colors.teal,
             borderRadius: BorderRadius.circular(6),
             boxShadow: [
               BoxShadow(

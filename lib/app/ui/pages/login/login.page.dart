@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/app/controllers/login.controller.dart';
 import 'package:flutter_application_1/app/ui/pages/login/widgets/button.dart';
-import 'package:flutter_application_1/app/ui/pages/login/widgets/text.form.dart';
+import 'package:flutter_application_1/app/ui/pages/login/widgets/text.field.dart';
 import 'package:flutter_application_1/app/utils/global.colors.dart';
 import 'package:get/get.dart';
 
@@ -59,9 +59,10 @@ class LoginPage extends GetView<LoginController> {
                     height: 15,
                   ),
                   //// EMAIL INPUT
-                  TextFormGlobal(
+                  TextFieldWidget(
                     controller: loginCL.username,
                     text: 'Usuario',
+                       icon: Icons.person,
                     obscure: false,
                     textInputType: TextInputType.text,
                   ),
@@ -69,9 +70,10 @@ class LoginPage extends GetView<LoginController> {
                     height: 15,
                   ),
                   //// PASSWORD INPUT
-                  TextFormGlobal(
+                  TextFieldWidget(
                     controller: loginCL.password,
                     text: 'Contraseña',
+                       icon: Icons.lock,
                     obscure: true,
                     textInputType: TextInputType.text,
                   ),

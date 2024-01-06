@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/app/controllers/home.controller.dart';
+import 'package:flutter_application_1/app/ui/pages/navigation/navigation.bar.dart';
 import 'package:get/get.dart';
 
 class HomePage extends GetView<HomeController> {
@@ -11,24 +12,21 @@ class HomePage extends GetView<HomeController> {
     width = MediaQuery.of(context).size.width;
     return Scaffold(
       body: Container(
-        color: Colors.indigo,
+        color: Colors.teal,
         height: height,
         width: width,
         child: Column(
           children: [
             Container(
               decoration: const BoxDecoration(
-                color: Colors.indigo,
+                color: Colors.teal,
               ),
               height: height * 0.20,
               width: width,
               child: Column(
                 children: [
                   Padding(
-                    padding: const EdgeInsets.only(
-                      top: 35,
-                      left: 15
-                    ),
+                    padding: const EdgeInsets.only(top: 35, left: 15),
                     child: Row(
                       children: [
                         InkWell(
@@ -53,7 +51,6 @@ class HomePage extends GetView<HomeController> {
                   topRight: Radius.circular(50),
                 ),
               ),
-              height: height * 0.80,
               width: width,
             ),
           ],

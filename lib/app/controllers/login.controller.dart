@@ -29,7 +29,7 @@ class LoginController extends GetxController {
           await loginRepository.getDataUser(username.text, password.text);
       if (validate.status) {
         box.write("username", validate.data?.username);
-        Get.offAllNamed(Routes.HOME);
+        Get.offAllNamed(Routes.NAVIGATION);
       } else {
         EasyLoading.showInfo(validate.message);
       }
