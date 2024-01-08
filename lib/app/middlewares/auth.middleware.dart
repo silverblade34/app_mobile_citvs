@@ -14,7 +14,7 @@ class AuthMiddleware extends GetMiddleware {
     if (route != Routes.LOGIN) {
       return isLogged ? null : RouteSettings(name: Routes.LOGIN);
     } else {
-      return isLogged ? const RouteSettings(name: Routes.HOME) : null;
+      return isLogged ? const RouteSettings(name: Routes.NAVIGATION) : null;
     }
   }
 }
