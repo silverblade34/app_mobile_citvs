@@ -1,4 +1,3 @@
-import 'package:flutter/material.dart';
 import 'package:flutter_application_1/app/ui/pages/certificates/certificates.page.dart';
 import 'package:flutter_application_1/app/ui/pages/comparison/comparison.page.dart';
 import 'package:flutter_application_1/app/ui/pages/reviews/reviews.page.dart';

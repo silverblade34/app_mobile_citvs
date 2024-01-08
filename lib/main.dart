@@ -6,11 +6,11 @@ import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 
-void main() async{
+void main() async {
   await GetStorage.init();
   runApp(GetMaterialApp(
     debugShowCheckedModeBanner: false,
-    initialRoute: Routes.INITIAL,
+    initialRoute: Routes.NAVIGATION,
     theme: ThemeData(
       useMaterial3: true,
       colorSchemeSeed: Colors.teal,

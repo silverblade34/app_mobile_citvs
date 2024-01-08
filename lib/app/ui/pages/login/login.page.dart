@@ -27,22 +27,11 @@ class LoginPage extends GetView<LoginController> {
                     alignment: Alignment.center,
                     child: Image.asset(
                       'assets/images/logo.png',
-                      width: 180,
-                      height: 180,
+                      height: 250,
                     ),
                   ),
                   const SizedBox(
                     height: 20,
-                  ),
-                  Container(
-                    alignment: Alignment.center,
-                    child: Text(
-                      'LOGIN',
-                      style: TextStyle(
-                          color: GlobalColors.mainColor,
-                          fontSize: 30,
-                          fontWeight: FontWeight.bold),
-                    ),
                   ),
                   const SizedBox(
                     height: 30,
