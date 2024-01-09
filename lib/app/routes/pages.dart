@@ -1,6 +1,6 @@
 import 'package:flutter_application_1/app/bindings/home.binding.dart';
 import 'package:flutter_application_1/app/bindings/login.binding.dart';
-import 'package:flutter_application_1/app/ui/pages/navigation/navigation.bar.dart';
+import 'package:flutter_application_1/app/ui/pages/navigation/navigation.layout.dart';
 import 'package:flutter_application_1/app/ui/pages/home/home.page.dart';
 import 'package:flutter_application_1/app/ui/pages/login/login.page.dart';
 import 'package:flutter_application_1/app/ui/pages/splash.page.dart';
@@ -26,7 +26,7 @@ abstract class AppPages {
     ),
     GetPage(
       name: Routes.NAVIGATION,
-      page: () => NavigationMenu(),
+      page: () => NavigationLayout(),
     )
   ];
 }

@@ -10,7 +10,7 @@ void main() async {
   await GetStorage.init();
   runApp(GetMaterialApp(
     debugShowCheckedModeBanner: false,
-    initialRoute: Routes.NAVIGATION,
+    initialRoute: Routes.INITIAL,
     theme: ThemeData(
       useMaterial3: true,
       colorSchemeSeed: Colors.teal,

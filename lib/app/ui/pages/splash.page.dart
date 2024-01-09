@@ -1,7 +1,6 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/app/ui/pages/login/login.page.dart';
-import 'package:flutter_application_1/app/utils/global.colors.dart';
 import 'package:get/get.dart';
 
 class SplashPage extends StatelessWidget {
@@ -11,13 +10,13 @@ class SplashPage extends StatelessWidget {
       Get.to(LoginPage());
     });
     return Scaffold(
-      backgroundColor: Colors.teal,
+      backgroundColor: const Color.fromARGB(255, 233, 255, 253),
       body: Center(
           child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Image.asset(
-            'assets/images/splash_fondo.png',
+            'assets/images/logo.png',
             width: 200,
             height: 200,
           ),

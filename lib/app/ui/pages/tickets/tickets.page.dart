@@ -88,7 +88,7 @@ class TicketsPage extends GetView<TicketsController> {
                     children: [
                       Column(
                         children: [
-                          Text("Boletas Emitidas"),
+                          Text("Boletas\nEmitidas"),
                           Container(
                             alignment: Alignment.center,
                             height: 60,
@@ -101,7 +101,7 @@ class TicketsPage extends GetView<TicketsController> {
                       ),
                       Column(
                         children: [
-                          Text("Facturas Emitidas"),
+                          Text("Facturas\nEmitidas"),
                           Container(
                             alignment: Alignment.center,
                             height: 60,
@@ -114,7 +114,7 @@ class TicketsPage extends GetView<TicketsController> {
                       ),
                       Column(
                         children: [
-                          Text("Anulaciones Emitidas"),
+                          Text("Anulaciones\nEmitidas"),
                           Container(
                             alignment: Alignment.center,
                             height: 60,
