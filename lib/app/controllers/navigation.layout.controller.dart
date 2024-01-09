@@ -10,7 +10,7 @@ class NavigationLayoutController extends GetxController {
   final Rx<int> selectedIndex = 0.obs;
   final screens = [
     ReviewsPage(),
-    TicketsPage(),
+    const TicketsPage(),
     ComparisonPage(),
     CertificatesPage(),
     VehiclesPage()

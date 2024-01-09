@@ -18,7 +18,7 @@ class NavigationLayout extends StatelessWidget {
             alignment: Alignment.center, // Centra la imagen
             child: Image.asset(
               'assets/images/logo.png', // Ruta de tu logo
-              height: 40, // Ajusta la altura según tu diseño
+              height: 45, // Ajusta la altura según tu diseño
               // Opcional: ajusta la propiedad width si es necesario
               // width: 100,
             ),

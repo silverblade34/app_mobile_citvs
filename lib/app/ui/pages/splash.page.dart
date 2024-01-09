@@ -20,14 +20,6 @@ class SplashPage extends StatelessWidget {
             width: 200,
             height: 200,
           ),
-          const Text(
-            'CITV',
-            style: TextStyle(
-              color: Colors.white,
-              fontSize: 30,
-              fontWeight: FontWeight.bold,
-            ),
-          ),
         ],
       )),
     );

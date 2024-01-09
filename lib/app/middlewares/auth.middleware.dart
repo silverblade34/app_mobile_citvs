@@ -12,7 +12,7 @@ class AuthMiddleware extends GetMiddleware {
     bool isLogged = box.read('isLogged') ?? false;
 
     if (route != Routes.LOGIN) {
-      return isLogged ? null : RouteSettings(name: Routes.LOGIN);
+      return isLogged ? null : const RouteSettings(name: Routes.LOGIN);
     } else {
       return isLogged ? const RouteSettings(name: Routes.NAVIGATION) : null;
     }

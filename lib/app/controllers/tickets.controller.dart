@@ -5,13 +5,30 @@ import 'package:get_storage/get_storage.dart';
 import 'package:intl/intl.dart';
 
 class TicketsController extends GetxController {
+  // Llamando al localstorage
   final box = GetStorage();
+
+  // Fecha del date picker
   RxString fechaT = RxString("");
-  RxString username = RxString("");
+
+  // Boletas emitidas
+  RxInt ballotsIssued = RxInt(0);
+
+  // Facturas emitidas
+  RxInt issuedInvoices = RxInt(0);
+
+  // Anulaciones emitidas
+  RxInt cancellationsIssued = RxInt(0);
+
+  // Ganancia total
+  RxInt totalProffit = RxInt(0);
+
   DateTime selectedDate = DateTime.now();
 
+  // Valor del item seleccionado por default en el dropdwon
   RxString valueLapDropdown = RxString('-');
 
+  // Declaración estructura items dropdown
   RxList<DropdownMenuItem<String>> itemsDropDown =
       RxList<DropdownMenuItem<String>>(
     [
@@ -30,7 +47,7 @@ class TicketsController extends GetxController {
     final currentDate = DateTime.now();
     final formattedDate = DateFormat('dd.MM.yyyy').format(currentDate);
     fechaT.value = formattedDate;
-    //username.value = box.read("username");
+    // Insertando elementos para el dropdown por default
     List<DropdownMenuItem<String>> itemCampus = [
       const DropdownMenuItem(
         alignment: Alignment.center,

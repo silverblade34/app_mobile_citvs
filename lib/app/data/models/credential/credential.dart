@@ -29,6 +29,7 @@ class CredentialUser {
   Map<String, dynamic> toJson() => {
         "message": message,
         "data":
+            // ignore: prefer_null_aware_operators
             data != null ? data!.toJson() : null, // Cambio: manejo de data null
         "status": status,
       };
