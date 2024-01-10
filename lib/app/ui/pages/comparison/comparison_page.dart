@@ -1,4 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/app/ui/pages/widgets/button_filter.dart';
+// -----------------------------Importaciones para los layout----------------------------------
+import 'package:flutter_application_1/app/ui/pages/widgets/navigation/custom_app_bar.dart';
+import 'package:flutter_application_1/app/ui/pages/widgets/navigation/custom_bottom_bar.dart';
+import 'package:flutter_application_1/app/ui/pages/widgets/navigation/navigation_drawer.dart';
+//---------------------------------------------------------------------------------------------
 import 'package:flutter_application_1/app/controllers/comparison_controller.dart';
 import 'package:flutter_application_1/app/ui/pages/comparison/widgets/table_dynamic.dart';
 import 'package:flutter_application_1/app/ui/pages/widgets/text_select.dart';
@@ -12,6 +18,11 @@ class ComparisonPage extends GetView<ComparisonController> {
     final controller = Get.put(ComparisonController());
 
     return Scaffold(
+      appBar: const CustomAppBar(),
+      drawer: const NavigationDrawerLayout(),
+      bottomNavigationBar: const CustomBottomNavigationBar(
+        initialIndex: 2,
+      ),
       body: SafeArea(
         child: SingleChildScrollView(
           child: Container(
@@ -59,7 +70,7 @@ class ComparisonPage extends GetView<ComparisonController> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
-                         const TextSelect(
+                    const TextSelect(
                       textLabel: "Tipo",
                     ),
                     Expanded(
@@ -94,28 +105,9 @@ class ComparisonPage extends GetView<ComparisonController> {
                 const SizedBox(
                   height: 15,
                 ),
-                InkWell(
-                  onTap: () async {},
-                  child: Container(
-                    alignment: Alignment.center,
-                    height: 45,
-                    decoration: BoxDecoration(
-                        color: const Color.fromARGB(255, 94, 172, 164),
-                        borderRadius: BorderRadius.circular(6),
-                        boxShadow: [
-                          BoxShadow(
-                            color: Colors.black.withOpacity(0.1),
-                            blurRadius: 10,
-                          ),
-                        ]),
-                    child: const Text(
-                      'Filtrar',
-                      style: TextStyle(
-                        color: Colors.white,
-                      ),
-                    ),
-                  ),
-                ),
+                ButtonFilter(onTap: () async {
+                  await controller.doSearch();
+                }),
                 const SizedBox(
                   height: 15,
                 ),

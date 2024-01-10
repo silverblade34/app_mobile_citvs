@@ -1,20 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/app/bindings/login_binding.dart';
+import 'package:flutter_application_1/app/controllers/navigation_layout_controller.dart';
 import 'package:flutter_application_1/app/routes/pages.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 
 void main() async {
+  Get.put(NavigationLayoutController()); 
   await GetStorage.init();
   runApp(GetMaterialApp(
     debugShowCheckedModeBanner: false,
-    initialRoute: Routes.INITIAL,
+    initialRoute: Routes.REVIEWS,
     theme: ThemeData(
       useMaterial3: true,
       colorSchemeSeed: Colors.teal,
     ),
-    defaultTransition: Transition.fade,
     initialBinding: LoginBinding(),
     getPages: AppPages.pages,
     builder: (context, widget) {

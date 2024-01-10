@@ -8,8 +8,7 @@ class NavigationDrawerLayout extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final controller = Get.find<
-        NavigationLayoutController>(); // Obtén la instancia del controlador
+    final navigationCL = Get.find<NavigationLayoutController>(); // Usa Get.find
 
     return Drawer(
       child: SingleChildScrollView(
@@ -17,7 +16,7 @@ class NavigationDrawerLayout extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: <Widget>[
             buildHeader(context),
-            buildMenuItems(context, controller)
+            buildMenuItems(context, navigationCL)
           ],
         ),
       ),
@@ -72,9 +71,10 @@ class NavigationDrawerLayout extends StatelessWidget {
               leading: Icon(destination.selectedIcon),
               title: Text(destination.label),
               onTap: () {
-                controller.selectedIndex.value =
-                    index; // Actualiza el índice al hacer tap
-                Navigator.of(context).pop();
+                controller.selectedIndex.value = index;
+                final selectedDestination =
+                    controller.navigationDestinations[index];
+                Get.offAllNamed(selectedDestination.route);
               },
             );
           }).toList(),

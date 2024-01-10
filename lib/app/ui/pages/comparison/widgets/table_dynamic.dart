@@ -86,7 +86,7 @@ class TableDynamic extends StatelessWidget {
       children: [
         TableRow(
           decoration: const BoxDecoration(
-            color: Color.fromARGB(255, 121, 199, 192),
+            color: Color.fromARGB(255, 119, 218, 209),
           ),
           children: [
             buildTableCellHeader('Mes'),

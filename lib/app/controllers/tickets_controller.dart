@@ -91,4 +91,11 @@ class TicketsController extends GetxController {
     valueLapDropdown.value = "0";
     super.onReady();
   }
+
+  doSearch() async {
+    print("--------DENTRO DEL CONTROLLER---------");
+    print("SEDE: " + valueLapDropdown.value);
+    print("FECHA DESDE: " + dateTo.value);
+    print("FECHA HASTA: " + dateFrom.value);
+  }
 }

@@ -16,13 +16,13 @@ class NavigationLayoutController extends GetxController {
       selectedIcon: Icons.paid,
       icon: Icons.paid_outlined,
       label: 'Boletas',
-      route: Routes.REVIEWS,
+      route: Routes.TICKETS,
     ),
     Destination(
       selectedIcon: Icons.table_chart,
       icon: Icons.table_chart_outlined,
       label: 'Comparación',
-      route: Routes.REVIEWS,
+      route: Routes.COMPARISON,
     ),
     Destination(
       selectedIcon: Icons.receipt_long,

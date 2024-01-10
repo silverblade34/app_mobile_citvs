@@ -4,10 +4,13 @@ import 'package:get/get.dart';
 class ComparisonController extends GetxController {
   // Valor del item seleccionado por default en el dropdwon
   RxString valueLapDropdown = RxString('-');
+
   // Año desde:
   RxString selectedYearFrom = RxString('');
+
   // Año hasta:
   RxString selectedYearTo = RxString('');
+
   // Declaración estructura items dropdown
   RxList<DropdownMenuItem<String>> itemsDropDown =
       RxList<DropdownMenuItem<String>>(
@@ -67,5 +70,10 @@ class ComparisonController extends GetxController {
     itemsDropDown.value = itemCampus;
     valueLapDropdown.value = "0";
     super.onReady();
+  }
+
+    doSearch() async {
+    print("--------DENTRO DEL CONTROLLER---------");
+    print("SEDE: " + valueLapDropdown.value);
   }
 }
