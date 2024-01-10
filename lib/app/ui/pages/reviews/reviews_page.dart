@@ -1,8 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/app/controllers/reviews.controller.dart';
-import 'package:flutter_application_1/app/ui/pages/widgets/date.picker.dart';
-import 'package:flutter_application_1/app/ui/pages/reviews/widgets/pie.chart.dart';
-import 'package:flutter_application_1/app/ui/pages/widgets/text.select.dart';
+// -----------------------------Importaciones para los layout----------------------------------
+import 'package:flutter_application_1/app/ui/pages/widgets/navigation/custom_app_bar.dart';
+import 'package:flutter_application_1/app/ui/pages/widgets/navigation/custom_bottom_bar.dart';
+import 'package:flutter_application_1/app/ui/pages/widgets/navigation/navigation_drawer.dart';
+//---------------------------------------------------------------------------------------------
+import 'package:flutter_application_1/app/controllers/reviews_controller.dart';
+import 'package:flutter_application_1/app/ui/pages/widgets/date_picker.dart';
+import 'package:flutter_application_1/app/ui/pages/reviews/widgets/pie_chart.dart';
+import 'package:flutter_application_1/app/ui/pages/widgets/text_select.dart';
 import 'package:get/get.dart';
 
 class ReviewsPage extends GetView<ReviewsController> {
@@ -10,8 +15,13 @@ class ReviewsPage extends GetView<ReviewsController> {
 
   @override
   Widget build(BuildContext context) {
-    final controller = Get.put(ReviewsController());
+    final reviewCL = Get.put(ReviewsController());
     return Scaffold(
+      appBar: const CustomAppBar(),
+      drawer: const NavigationDrawerLayout(),
+      bottomNavigationBar: const CustomBottomNavigationBar(
+        initialIndex: 0,
+      ),
       body: SafeArea(
         child: SingleChildScrollView(
           child: Container(
@@ -22,9 +32,9 @@ class ReviewsPage extends GetView<ReviewsController> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
-                   const TextSelect(
-                      textLabel: "Sede",
-                    ),
+                      const TextSelect(
+                        textLabel: "Sede",
+                      ),
                       Expanded(
                         child: Container(
                           decoration: BoxDecoration(
@@ -37,12 +47,12 @@ class ReviewsPage extends GetView<ReviewsController> {
                           height: 45,
                           child: DropdownButton<String>(
                             isExpanded: true,
-                            value: controller.valueLapDropdown.value,
+                            value: reviewCL.valueLapDropdown.value,
                             underline: Container(color: Colors.transparent),
-                            items: controller.itemsDropDown,
+                            items: reviewCL.itemsDropDown,
                             onChanged: (String? newValue) async {
                               if (newValue != null) {
-                                controller.valueLapDropdown.value = newValue;
+                                reviewCL.valueLapDropdown.value = newValue;
                               }
                             },
                           ),
@@ -53,15 +63,14 @@ class ReviewsPage extends GetView<ReviewsController> {
                   DatePicker(
                     label: "Fecha desde",
                     onChanged: (newDate) {
-                      controller.dateFrom.value =
+                      reviewCL.dateFrom.value =
                           newDate; // Actualizar fecha desde
                     },
                   ),
                   DatePicker(
                     label: "Fecha hasta",
                     onChanged: (newDate) {
-                      controller.dateTo.value =
-                          newDate; // Actualizar fecha desde
+                      reviewCL.dateTo.value = newDate; // Actualizar fecha desde
                     },
                   ),
                   const SizedBox(
@@ -69,7 +78,7 @@ class ReviewsPage extends GetView<ReviewsController> {
                   ),
                   InkWell(
                     onTap: () async {
-                      await controller.doSearch();
+                      await reviewCL.doSearch();
                     },
                     child: Container(
                       alignment: Alignment.center,
@@ -91,7 +100,7 @@ class ReviewsPage extends GetView<ReviewsController> {
                       ),
                     ),
                   ),
-                  PieChart()
+                  const PieChart()
                 ],
               ),
             ),

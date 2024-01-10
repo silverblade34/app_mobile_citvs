@@ -1,6 +1,5 @@
 import 'dart:math';
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
 
 class TableGrid extends DataTableSource {
   final List<Map<String, dynamic>> _data = List.generate(

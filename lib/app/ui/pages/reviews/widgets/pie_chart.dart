@@ -1,13 +1,14 @@
-import 'dart:async';
 import 'package:syncfusion_flutter_charts/charts.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 
 class PieChart extends StatelessWidget {
+  const PieChart({super.key});
+
+  @override
   Widget build(BuildContext context) {
     return Center(
         child: SfCircularChart(
-            legend: Legend(isVisible: true),
+            legend: const Legend(isVisible: true),
             series: <CircularSeries<SalesData, String>>[
           DoughnutSeries<SalesData, String>(
               explode: true,
@@ -19,7 +20,7 @@ class PieChart extends StatelessWidget {
               ],
               xValueMapper: (SalesData sales, _) => sales.year,
               yValueMapper: (SalesData sales, _) => sales.sales,
-              dataLabelSettings: DataLabelSettings(isVisible: true)),
+              dataLabelSettings: const DataLabelSettings(isVisible: true)),
         ]));
   }
 }

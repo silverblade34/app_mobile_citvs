@@ -1,6 +1,6 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/app/ui/pages/login/login.page.dart';
+import 'package:flutter_application_1/app/ui/pages/login/login_page.dart';
 import 'package:get/get.dart';
 
 class SplashPage extends StatelessWidget {

@@ -1,8 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/app/controllers/tickets.controller.dart';
-import 'package:flutter_application_1/app/ui/pages/tickets/widgets/cards.tickets.dart';
-import 'package:flutter_application_1/app/ui/pages/widgets/date.picker.dart';
-import 'package:flutter_application_1/app/ui/pages/widgets/text.select.dart';
+// -----------------------------Importaciones para los layout----------------------------------
+import 'package:flutter_application_1/app/ui/pages/widgets/navigation/custom_app_bar.dart';
+import 'package:flutter_application_1/app/ui/pages/widgets/navigation/custom_bottom_bar.dart';
+import 'package:flutter_application_1/app/ui/pages/widgets/navigation/navigation_drawer.dart';
+//---------------------------------------------------------------------------------------------
+import 'package:flutter_application_1/app/controllers/tickets_controller.dart';
+import 'package:flutter_application_1/app/ui/pages/tickets/widgets/cards_tickets.dart';
+import 'package:flutter_application_1/app/ui/pages/widgets/date_picker.dart';
+import 'package:flutter_application_1/app/ui/pages/widgets/text_select.dart';
 import 'package:get/get.dart';
 
 class TicketsPage extends GetView<TicketsController> {
@@ -12,6 +17,11 @@ class TicketsPage extends GetView<TicketsController> {
   Widget build(BuildContext context) {
     final controller = Get.put(TicketsController());
     return Scaffold(
+      appBar: const CustomAppBar(),
+      drawer: const NavigationDrawerLayout(),
+      bottomNavigationBar: const CustomBottomNavigationBar(
+        initialIndex: 1,
+      ),
       body: SafeArea(
         child: SingleChildScrollView(
           child: Container(

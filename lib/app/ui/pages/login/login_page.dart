@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/app/controllers/login.controller.dart';
+import 'package:flutter_application_1/app/controllers/login_controller.dart';
 import 'package:flutter_application_1/app/ui/pages/login/widgets/button.dart';
-import 'package:flutter_application_1/app/ui/pages/login/widgets/text.field.dart';
-import 'package:flutter_application_1/app/ui/pages/login/widgets/text.pass.dart';
+import 'package:flutter_application_1/app/ui/pages/login/widgets/text_field.dart';
+import 'package:flutter_application_1/app/ui/pages/login/widgets/text_pass.dart';
 import 'package:flutter_application_1/app/utils/global.colors.dart';
 import 'package:get/get.dart';
 

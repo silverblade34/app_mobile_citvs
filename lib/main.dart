@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/app/bindings/login.binding.dart';
+import 'package:flutter_application_1/app/bindings/login_binding.dart';
 import 'package:flutter_application_1/app/routes/pages.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:get/get.dart';

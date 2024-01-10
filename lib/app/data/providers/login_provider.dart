@@ -1,5 +1,3 @@
-import 'dart:convert';
-
 import 'package:get/get.dart';
 
 const baseUrl = 'http://204.48.17.106:5030';

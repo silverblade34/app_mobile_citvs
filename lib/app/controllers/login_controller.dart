@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/app/data/repository/login.repository.dart';
+import 'package:flutter_application_1/app/data/repository/login_repository.dart';
 import 'package:flutter_application_1/app/routes/pages.dart';
 import 'package:get/get.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
@@ -30,7 +30,14 @@ class LoginController extends GetxController {
           await loginRepository.getDataUser(username.text, password.text);
       if (validate.status) {
         box.write("username", validate.data?.username);
-        Get.offAllNamed(Routes.NAVIGATION);
+        EasyLoading.show(
+            status: 'Cargando...'); // Muestra el indicador de carga
+        // Espera un breve período antes de navegar a REVIEWS y cerrar el indicador
+        await Future.delayed(
+          const Duration(seconds: 1),
+        ); // Puedes ajustar el tiempo según sea necesario
+        Get.offAllNamed(Routes.REVIEWS);
+        EasyLoading.dismiss();
       } else {
         EasyLoading.showInfo(validate.message);
       }

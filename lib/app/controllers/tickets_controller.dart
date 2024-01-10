@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_datetime_picker_plus/flutter_datetime_picker_plus.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
+// ignore: depend_on_referenced_packages
 import 'package:intl/intl.dart';
 
 class TicketsController extends GetxController {

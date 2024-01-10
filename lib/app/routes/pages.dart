@@ -1,16 +1,12 @@
-import 'package:flutter_application_1/app/bindings/comparison.binding.dart';
-import 'package:flutter_application_1/app/bindings/home.binding.dart';
-import 'package:flutter_application_1/app/bindings/login.binding.dart';
-import 'package:flutter_application_1/app/bindings/navigation.binding.dart';
-import 'package:flutter_application_1/app/bindings/reviews.binding.dart';
-import 'package:flutter_application_1/app/bindings/tickets.binding.dart';
-import 'package:flutter_application_1/app/ui/pages/comparison/comparison.page.dart';
-import 'package:flutter_application_1/app/ui/pages/navigation/navigation.layout.dart';
-import 'package:flutter_application_1/app/ui/pages/home/home.page.dart';
-import 'package:flutter_application_1/app/ui/pages/login/login.page.dart';
-import 'package:flutter_application_1/app/ui/pages/reviews/reviews.page.dart';
-import 'package:flutter_application_1/app/ui/pages/splash.page.dart';
-import 'package:flutter_application_1/app/ui/pages/tickets/tickets.page.dart';
+import 'package:flutter_application_1/app/bindings/comparison_binding.dart';
+import 'package:flutter_application_1/app/bindings/login_binding.dart';
+import 'package:flutter_application_1/app/bindings/reviews_binding.dart';
+import 'package:flutter_application_1/app/bindings/tickets_binding.dart';
+import 'package:flutter_application_1/app/ui/pages/comparison/comparison_page.dart';
+import 'package:flutter_application_1/app/ui/pages/login/login_page.dart';
+import 'package:flutter_application_1/app/ui/pages/reviews/reviews_page.dart';
+import 'package:flutter_application_1/app/ui/pages/splash_page.dart';
+import 'package:flutter_application_1/app/ui/pages/tickets/tickets_page.dart';
 import 'package:get/get.dart';
 part './routes.dart';
 
@@ -26,17 +22,6 @@ abstract class AppPages {
       page: () => LoginPage(),
       binding: LoginBinding(),
       transition: Transition.fadeIn,
-    ),
-    GetPage(
-      name: Routes.HOME,
-      page: () => HomePage(),
-      binding: HomeBinding(),
-      transition: Transition.fadeIn,
-    ),
-    GetPage(
-      name: Routes.NAVIGATION,
-      page: () => const NavigationLayout(),
-      binding: NavigationLayoutBinding(),
     ),
     GetPage(
       name: Routes.REVIEWS,

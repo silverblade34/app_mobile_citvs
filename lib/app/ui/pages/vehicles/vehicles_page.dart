@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/app/controllers/vehicles.controller.dart';
+import 'package:flutter_application_1/app/controllers/vehicles_controller.dart';
 import 'package:get/get.dart';
 
 class VehiclesPage extends GetView<VehiclesController> {

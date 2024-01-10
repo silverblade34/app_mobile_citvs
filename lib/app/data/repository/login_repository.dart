@@ -1,5 +1,5 @@
 import 'package:flutter_application_1/app/data/models/credential/credential.dart';
-import 'package:flutter_application_1/app/data/providers/login.provider.dart';
+import 'package:flutter_application_1/app/data/providers/login_provider.dart';
 
 LoginProvider loginProvider = LoginProvider();
 

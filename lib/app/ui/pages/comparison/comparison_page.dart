@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/app/controllers/comparison.controller.dart';
-import 'package:flutter_application_1/app/ui/pages/comparison/widgets/table.dynamic.dart';
-import 'package:flutter_application_1/app/ui/pages/comparison/widgets/year.input.dart';
-import 'package:flutter_application_1/app/ui/pages/widgets/text.select.dart';
+import 'package:flutter_application_1/app/controllers/comparison_controller.dart';
+import 'package:flutter_application_1/app/ui/pages/comparison/widgets/table_dynamic.dart';
+import 'package:flutter_application_1/app/ui/pages/widgets/text_select.dart';
 import 'package:get/get.dart';
 
 class ComparisonPage extends GetView<ComparisonController> {
@@ -12,20 +11,6 @@ class ComparisonPage extends GetView<ComparisonController> {
   Widget build(BuildContext context) {
     final controller = Get.put(ComparisonController());
 
-    final List<String> months = [
-      'January',
-      'February',
-      'March',
-      'April',
-      'May',
-      'June',
-      'July',
-      'August',
-      'September',
-      'October',
-      'November',
-      'December'
-    ];
     return Scaffold(
       body: SafeArea(
         child: SingleChildScrollView(
