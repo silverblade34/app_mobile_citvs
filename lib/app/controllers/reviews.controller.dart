@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_datetime_picker_plus/flutter_datetime_picker_plus.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:intl/intl.dart';
 
 class ReviewsController extends GetxController {
   final box = GetStorage();
-  RxString fechaT = RxString("");
+  RxString dateFrom = RxString("");
+  RxString dateTo = RxString("");
   RxString username = RxString("");
   DateTime selectedDate = DateTime.now();
 
@@ -29,14 +29,17 @@ class ReviewsController extends GetxController {
   void onReady() async {
     final currentDate = DateTime.now();
     final formattedDate = DateFormat('dd.MM.yyyy').format(currentDate);
-    fechaT.value = formattedDate;
-    //username.value = box.read("username");
+
+    dateFrom.value = formattedDate;
+    dateTo.value = formattedDate;
+
+    // Declaramos los items del dropdown
     List<DropdownMenuItem<String>> itemCampus = [
       const DropdownMenuItem(
         alignment: Alignment.center,
         value: "0",
         child: Text(
-          "SELECCIONAR",
+          "TODOS",
           textAlign: TextAlign.center,
           style: TextStyle(fontSize: 15),
         ),
@@ -71,29 +74,15 @@ class ReviewsController extends GetxController {
     ];
     itemsDropDown.value = itemCampus;
     valueLapDropdown.value = "0";
+
+    await doSearch();
     super.onReady();
   }
 
-  void selectDate(BuildContext context) async {
-    final DateTime? picked = await DatePicker.showDatePicker(
-      context,
-      showTitleActions: true,
-      minTime: DateTime(2000),
-      maxTime: DateTime(2101),
-      onConfirm: (date) {
-        // ignore: unnecessary_null_comparison
-        if (date != null && date != selectedDate) {
-          selectedDate = date;
-          final formattedDate = DateFormat('dd.MM.yyyy').format(date);
-          fechaT.value = formattedDate;
-        }
-      },
-      currentTime: selectedDate,
-      locale: LocaleType.en, // Cambia la localización según tu preferencia.
-    );
-
-    if (picked != null && picked != selectedDate) {
-      selectedDate = picked;
-    }
+  doSearch() async {
+    print("--------DENTRO DEL CONTROLLER---------");
+    print("SEDE: " + valueLapDropdown.value);
+    print("FECHA DESDE: " + dateTo.value);
+    print("FECHA HASTA: " + dateFrom.value);
   }
 }

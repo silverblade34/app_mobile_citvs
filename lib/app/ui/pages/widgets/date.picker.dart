@@ -1,13 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 
 class DatePicker extends StatefulWidget {
+  // Declaración del constructor
   const DatePicker({
     Key? key,
     required this.label,
+    required this.onChanged,
   }) : super(key: key);
+
   final String label; // Asegúrate de que label sea de tipo String
+  final ValueChanged<String>? onChanged; // Cambio a ValueChanged<String>
 
   @override
   State<DatePicker> createState() => DatePickerState();
@@ -19,7 +22,8 @@ class DatePickerState extends State<DatePicker> {
   @override
   void initState() {
     super.initState();
-    _date = TextEditingController();
+    _date = TextEditingController(
+        text: DateFormat('yyyy-MM-dd').format(DateTime.now()));
   }
 
   @override
@@ -29,7 +33,8 @@ class DatePickerState extends State<DatePicker> {
         controller: _date,
         decoration: InputDecoration(
           icon: const Icon(Icons.calendar_today_rounded),
-          labelText: widget.label, // Utiliza widget.label para obtener el valor dinámico
+          labelText: widget
+              .label, // Utiliza widget.label para obtener el valor dinámico
         ),
         onTap: () async {
           DateTime? pickedDate = await showDatePicker(
@@ -42,6 +47,9 @@ class DatePickerState extends State<DatePicker> {
           if (pickedDate != null) {
             setState(() {
               _date.text = DateFormat('yyyy-MM-dd').format(pickedDate);
+              if (widget.onChanged != null) {
+                widget.onChanged!(_date.text); // Notificar al padre el cambio
+              }
             });
           }
         },
@@ -55,6 +63,3 @@ class DatePickerState extends State<DatePicker> {
     super.dispose();
   }
 }
-
-
-class DatePickerController extends GetxController {}

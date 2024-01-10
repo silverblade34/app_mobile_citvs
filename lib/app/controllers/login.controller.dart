@@ -9,6 +9,7 @@ class LoginController extends GetxController {
   final TextEditingController username = TextEditingController();
   final TextEditingController password = TextEditingController();
   LoginRepository loginRepository = LoginRepository();
+  RxBool obscurePass = RxBool(true);
 
   validateFields() async {
     if (username.text.isEmpty && password.text.isEmpty) {

@@ -9,13 +9,13 @@ import 'package:get/get.dart';
 class NavigationLayoutController extends GetxController {
   final Rx<int> selectedIndex = 0.obs;
   final screens = [
-    ReviewsPage(),
-    const TicketsPage(),
-    ComparisonPage(),
-    CertificatesPage(),
-    VehiclesPage()
+   () => const ReviewsPage(), // Usa una función lambda para crear ReviewsPage
+    () => const TicketsPage(),
+    () => const ComparisonPage(),
+    () => CertificatesPage(),
+    () => VehiclesPage()
   ];
-  
+
 // Lista de destinos con sus respectivas propiedades
   List<Destination> navigationDestinations = [
     Destination(
@@ -29,8 +29,8 @@ class NavigationLayoutController extends GetxController {
       label: 'Boletas',
     ),
     Destination(
-      selectedIcon: Icons.bar_chart,
-      icon: Icons.bar_chart_outlined,
+      selectedIcon: Icons.table_chart,
+      icon: Icons.table_chart_outlined,
       label: 'Comparación',
     ),
     Destination(
@@ -44,7 +44,6 @@ class NavigationLayoutController extends GetxController {
       label: 'Vehiculos',
     ),
   ];
-
 }
 
 class Destination {

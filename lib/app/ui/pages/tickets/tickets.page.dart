@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_application_1/app/controllers/tickets.controller.dart';
 import 'package:flutter_application_1/app/ui/pages/tickets/widgets/cards.tickets.dart';
 import 'package:flutter_application_1/app/ui/pages/widgets/date.picker.dart';
+import 'package:flutter_application_1/app/ui/pages/widgets/text.select.dart';
 import 'package:get/get.dart';
 
 class TicketsPage extends GetView<TicketsController> {
@@ -20,14 +21,8 @@ class TicketsPage extends GetView<TicketsController> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
-                    const Expanded(
-                      child: Text(
-                        "Sedes",
-                        style: TextStyle(
-                          fontSize: 20,
-                          color: Colors.black,
-                        ),
-                      ),
+                    const TextSelect(
+                      textLabel: "Sede",
                     ),
                     Expanded(
                       child: Obx(() => Container(
@@ -38,7 +33,7 @@ class TicketsPage extends GetView<TicketsController> {
                                   8), // Bordes redondeados
                             ),
                             // color: Colors.blueAccent,
-                            height: 40,
+                            height: 45,
                             child: DropdownButton<String>(
                               isExpanded: true,
                               value: controller.valueLapDropdown.value,
@@ -56,11 +51,18 @@ class TicketsPage extends GetView<TicketsController> {
                     ),
                   ],
                 ),
-                const DatePicker(
+                DatePicker(
                   label: "Fecha desde",
+                  onChanged: (newDate) {
+                    controller.dateFrom.value =
+                        newDate; // Actualizar fecha desde
+                  },
                 ),
-                const DatePicker(
+                DatePicker(
                   label: "Fecha hasta",
+                  onChanged: (newDate) {
+                    controller.dateTo.value = newDate; // Actualizar fecha desde
+                  },
                 ),
                 const SizedBox(
                   height: 15,
@@ -90,26 +92,26 @@ class TicketsPage extends GetView<TicketsController> {
                 const SizedBox(
                   height: 25,
                 ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment
-                      .spaceBetween, // Justifica entre los elementos
-                  children: [
-                    CardTicket(
-                      title: 'Boletas\nEmitidas',
-                      value: controller.ballotsIssued,
-                      backgroundColor: const Color.fromARGB(255, 105, 179, 240),
-                    ),
-                    CardTicket(
-                      title: 'Facturas\nEmitidas',
-                      value: controller.issuedInvoices,
-                      backgroundColor: const Color.fromARGB(255, 233, 219, 91),
-                    ),
-                    CardTicket(
-                      title: 'Anulaciones\nEmitidas',
-                      value: controller.cancellationsIssued,
-                      backgroundColor: const Color.fromARGB(255, 231, 108, 99),
-                    ),
-                  ],
+                Container(
+                  padding: const EdgeInsets.only(left: 20, right: 20),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment
+                        .spaceBetween, // Justifica entre los elementos
+                    children: [
+                      CardTicket(
+                        title: 'Boletas Emitidas',
+                        value: controller.ballotsIssued,
+                        backgroundColor:
+                            const Color.fromARGB(255, 125, 185, 224),
+                      ),
+                      CardTicket(
+                        title: 'Facturas Emitidas',
+                        value: controller.issuedInvoices,
+                        backgroundColor:
+                            const Color.fromARGB(255, 139, 204, 212),
+                      ),
+                    ],
+                  ),
                 ),
                 Container(
                   alignment: Alignment.center,
@@ -131,8 +133,8 @@ class TicketsPage extends GetView<TicketsController> {
                         Container(
                           width: 200,
                           decoration: BoxDecoration(
-                            color: const Color.fromARGB(255, 113, 189,
-                                116), // Color de fondo del "botón"
+                            color: const Color.fromARGB(255, 122, 177,
+                                124), // Color de fondo del "botón"
                             borderRadius: BorderRadius.circular(15),
                           ),
                           padding: const EdgeInsets.all(8),

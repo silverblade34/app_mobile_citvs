@@ -2,9 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_application_1/app/controllers/reviews.controller.dart';
 import 'package:flutter_application_1/app/ui/pages/widgets/date.picker.dart';
 import 'package:flutter_application_1/app/ui/pages/reviews/widgets/pie.chart.dart';
+import 'package:flutter_application_1/app/ui/pages/widgets/text.select.dart';
 import 'package:get/get.dart';
 
 class ReviewsPage extends GetView<ReviewsController> {
+  const ReviewsPage({super.key});
+
   @override
   Widget build(BuildContext context) {
     final controller = Get.put(ReviewsController());
@@ -19,15 +22,9 @@ class ReviewsPage extends GetView<ReviewsController> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
-                      const Expanded(
-                        child: Text(
-                          "Sedes",
-                          style: TextStyle(
-                            fontSize: 20,
-                            color: Colors.black,
-                          ),
-                        ),
-                      ),
+                   const TextSelect(
+                      textLabel: "Sede",
+                    ),
                       Expanded(
                         child: Container(
                           decoration: BoxDecoration(
@@ -37,31 +34,43 @@ class ReviewsPage extends GetView<ReviewsController> {
                                 BorderRadius.circular(8), // Bordes redondeados
                           ),
                           // color: Colors.blueAccent,
-                          height: 40,
+                          height: 45,
                           child: DropdownButton<String>(
                             isExpanded: true,
                             value: controller.valueLapDropdown.value,
                             underline: Container(color: Colors.transparent),
                             items: controller.itemsDropDown,
                             onChanged: (String? newValue) async {
-                              print("--------------1");
+                              if (newValue != null) {
+                                controller.valueLapDropdown.value = newValue;
+                              }
                             },
                           ),
                         ),
                       ),
                     ],
                   ),
-                  const DatePicker(
+                  DatePicker(
                     label: "Fecha desde",
+                    onChanged: (newDate) {
+                      controller.dateFrom.value =
+                          newDate; // Actualizar fecha desde
+                    },
                   ),
-                  const DatePicker(
+                  DatePicker(
                     label: "Fecha hasta",
+                    onChanged: (newDate) {
+                      controller.dateTo.value =
+                          newDate; // Actualizar fecha desde
+                    },
                   ),
                   const SizedBox(
                     height: 15,
                   ),
                   InkWell(
-                    onTap: () {},
+                    onTap: () async {
+                      await controller.doSearch();
+                    },
                     child: Container(
                       alignment: Alignment.center,
                       height: 45,

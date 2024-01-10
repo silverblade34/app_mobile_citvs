@@ -5,7 +5,7 @@ import 'package:get/get.dart';
 
 /// Flutter code sample for [NavigationBar].
 
-class NavigationLayout extends StatelessWidget {
+class NavigationLayout extends GetView<NavigationLayoutController> {
   const NavigationLayout({super.key});
 
   @override
@@ -13,62 +13,62 @@ class NavigationLayout extends StatelessWidget {
     final controller = Get.put(NavigationLayoutController());
 
     return Scaffold(
-        appBar: AppBar(
-          title: Container(
-            alignment: Alignment.center, // Centra la imagen
-            child: Image.asset(
-              'assets/images/logo.png', // Ruta de tu logo
-              height: 45, // Ajusta la altura según tu diseño
-              // Opcional: ajusta la propiedad width si es necesario
-              // width: 100,
-            ),
+      appBar: AppBar(
+        title: Container(
+          alignment: Alignment.center,
+          child: Image.asset(
+            'assets/images/logo.png',
+            height: 45,
           ),
-          backgroundColor: Colors.white,
-          elevation: 1,
-          actions: <Widget>[
-            Padding(
-              padding: const EdgeInsets.all(10.0),
-              child: Container(
-                width: 35,
-                height: 35,
-                decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(10),
-                    image: const DecorationImage(
-                        image: AssetImage('assets/images/perfil.png'),
-                        fit: BoxFit.cover)),
-                child: Transform.translate(
-                  offset: const Offset(15, -15),
-                  child: Container(
-                    margin: const EdgeInsets.all(10),
-                    decoration: BoxDecoration(
-                        border: Border.all(width: 3, color: Colors.white),
-                        shape: BoxShape.circle,
-                        color: Colors.yellow[800]),
-                  ),
+        ),
+        backgroundColor: Colors.white,
+        elevation: 1,
+        actions: <Widget>[
+          Padding(
+            padding: const EdgeInsets.all(10.0),
+            child: Container(
+              width: 35,
+              height: 35,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(10),
+                image: const DecorationImage(
+                    image: AssetImage('assets/images/perfil.png'),
+                    fit: BoxFit.cover),
+              ),
+              child: Transform.translate(
+                offset: const Offset(15, -15),
+                child: Container(
+                  margin: const EdgeInsets.all(10),
+                  decoration: BoxDecoration(
+                      border: Border.all(width: 3, color: Colors.white),
+                      shape: BoxShape.circle,
+                      color: Colors.yellow[800]),
                 ),
               ),
-            )
-          ],
-        ),
-        drawer: const NavigationDrawerLayout(),
-        bottomNavigationBar: Obx(
-          () => NavigationBar(
-            height: 80,
-            onDestinationSelected: (int index) =>
-                controller.selectedIndex.value = index,
-            indicatorColor: const Color.fromARGB(255, 120, 204, 196),
-            selectedIndex: controller.selectedIndex.value,
-            destinations: List<Widget>.generate(
-              controller.navigationDestinations.length,
-              (index) => NavigationDestination(
-                selectedIcon:
-                    Icon(controller.navigationDestinations[index].selectedIcon),
-                icon: Icon(controller.navigationDestinations[index].icon),
-                label: controller.navigationDestinations[index].label,
-              ),
+            ),
+          )
+        ],
+      ),
+      drawer: const NavigationDrawerLayout(),
+      bottomNavigationBar: Obx(
+        () => NavigationBar(
+          height: 80,
+          onDestinationSelected: (int index) =>
+              controller.selectedIndex.value = index,
+          indicatorColor: const Color.fromARGB(255, 120, 204, 196),
+          selectedIndex: controller.selectedIndex.value,
+          destinations: List<Widget>.generate(
+            controller.navigationDestinations.length,
+            (index) => NavigationDestination(
+              selectedIcon:
+                  Icon(controller.navigationDestinations[index].selectedIcon),
+              icon: Icon(controller.navigationDestinations[index].icon),
+              label: controller.navigationDestinations[index].label,
             ),
           ),
         ),
-        body: Obx(() => controller.screens[controller.selectedIndex.value]));
+      ),
+      body: Obx(() => controller.screens[controller.selectedIndex.value]()),
+    );
   }
 }

@@ -8,9 +8,8 @@ class TicketsController extends GetxController {
   // Llamando al localstorage
   final box = GetStorage();
 
-  // Fecha del date picker
-  RxString fechaT = RxString("");
-
+  RxString dateFrom = RxString("");
+  RxString dateTo = RxString("");
   // Boletas emitidas
   RxInt ballotsIssued = RxInt(0);
 
@@ -46,7 +45,9 @@ class TicketsController extends GetxController {
   void onReady() async {
     final currentDate = DateTime.now();
     final formattedDate = DateFormat('dd.MM.yyyy').format(currentDate);
-    fechaT.value = formattedDate;
+
+    dateFrom.value = formattedDate;
+    dateTo.value = formattedDate;
     // Insertando elementos para el dropdown por default
     List<DropdownMenuItem<String>> itemCampus = [
       const DropdownMenuItem(
@@ -89,28 +90,5 @@ class TicketsController extends GetxController {
     itemsDropDown.value = itemCampus;
     valueLapDropdown.value = "0";
     super.onReady();
-  }
-
-  void selectDate(BuildContext context) async {
-    final DateTime? picked = await DatePicker.showDatePicker(
-      context,
-      showTitleActions: true,
-      minTime: DateTime(2000),
-      maxTime: DateTime(2101),
-      onConfirm: (date) {
-        // ignore: unnecessary_null_comparison
-        if (date != null && date != selectedDate) {
-          selectedDate = date;
-          final formattedDate = DateFormat('dd.MM.yyyy').format(date);
-          fechaT.value = formattedDate;
-        }
-      },
-      currentTime: selectedDate,
-      locale: LocaleType.en, // Cambia la localización según tu preferencia.
-    );
-
-    if (picked != null && picked != selectedDate) {
-      selectedDate = picked;
-    }
   }
 }
