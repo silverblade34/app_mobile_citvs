@@ -11,11 +11,19 @@ class LoginProvider extends GetConnect {
       'password': password,
     };
 
-    // Enviar la solicitud POST con el payload
-    return await post(
-      "$baseUrl/$apiUrl/auth/login",
-      payload,
-      contentType: 'application/json', // Asegúrate de establecer el tipo de contenido
-    );
+    try {
+      // Enviar la solicitud POST con el payload
+      final raw = await post("$baseUrl/$apiUrl/auth/login", payload)
+          .timeout(const Duration(milliseconds: 8000));
+
+      // Verificar el estado de la respuesta
+      if (raw.status.hasError) {
+        throw Exception("Error en la solicitud");
+      }
+
+      return raw; // Devuelve la respuesta
+    } catch (e) {
+      throw Exception("Error en la solicitud: catch");
+    }
   }
 }
