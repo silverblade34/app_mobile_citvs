@@ -24,7 +24,7 @@ class NavigationLayoutController extends GetxController {
     Destination(
       selectedIcon: Icons.table_chart,
       icon: Icons.table_chart_outlined,
-      label: 'Comparación',
+      label: 'Comparar',
       route: Routes.COMPARISON,
     ),
     Destination(

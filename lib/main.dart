@@ -7,18 +7,20 @@ import 'package:get_storage/get_storage.dart';
 
 void main() async {
   await GetStorage.init();
-  runApp(GetMaterialApp(
-    debugShowCheckedModeBanner: false,
-    initialRoute: Routes.INITIAL,
-    theme: ThemeData(
-      useMaterial3: true,
-      colorSchemeSeed: Colors.teal,
+  runApp(
+    GetMaterialApp(
+      debugShowCheckedModeBanner: false,
+      initialRoute: Routes.INITIAL,
+      theme: ThemeData(
+        useMaterial3: true,
+        colorSchemeSeed: Colors.teal,
+      ),
+      initialBinding: LoginBinding(),
+      getPages: AppPages.pages,
+      builder: (context, widget) {
+        widget = EasyLoading.init()(context, widget);
+        return widget;
+      },
     ),
-    initialBinding: LoginBinding(),
-    getPages: AppPages.pages,
-    builder: (context, widget) {
-      widget = EasyLoading.init()(context, widget);
-      return widget;
-    },
-  ));
+  );
 }

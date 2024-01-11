@@ -92,7 +92,7 @@ class VehiclesPage extends GetView<VehiclesController> {
                   children: [
                     TypeVehicle(
                       label: "Pesado",
-                      icon: Icons.directions_bus,
+                      icon: Icons.local_shipping,
                       quantity: vehiclesCL.heavyVehicleQuantity,
                     ),
                     const SizedBox(
