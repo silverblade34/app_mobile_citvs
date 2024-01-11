@@ -9,5 +9,6 @@ abstract class Routes {
   static const REVIEWS = '/reviews';
   static const TICKETS = '/tickets';
   static const COMPARISON = '/comparison';
+  static const CERTIFICATES = '/certificates';
   static const VEHICLES = '/vehicles';
 }

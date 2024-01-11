@@ -28,7 +28,7 @@ class NavigationLayoutController extends GetxController {
       selectedIcon: Icons.receipt_long,
       icon: Icons.receipt_long_outlined,
       label: 'Certificados',
-      route: Routes.REVIEWS,
+      route: Routes.CERTIFICATES,
     ),
     Destination(
       selectedIcon: Icons.directions_car_filled,

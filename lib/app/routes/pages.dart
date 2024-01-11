@@ -1,8 +1,10 @@
+import 'package:citvs/app/bindings/certificates_binding.dart';
 import 'package:citvs/app/bindings/comparison_binding.dart';
 import 'package:citvs/app/bindings/login_binding.dart';
 import 'package:citvs/app/bindings/reviews_binding.dart';
 import 'package:citvs/app/bindings/tickets_binding.dart';
 import 'package:citvs/app/bindings/vehicles_binding.dart';
+import 'package:citvs/app/ui/pages/certificates/certificates_page.dart';
 import 'package:citvs/app/ui/pages/comparison/comparison_page.dart';
 import 'package:citvs/app/ui/pages/login/login_page.dart';
 import 'package:citvs/app/ui/pages/reviews/reviews_page.dart';
@@ -39,6 +41,11 @@ abstract class AppPages {
       name: Routes.COMPARISON,
       page: () => const ComparisonPage(),
       binding: ComparisonBinding(),
+    ),
+    GetPage(
+      name: Routes.CERTIFICATES,
+      page: () => const CertificatesPage(),
+      binding: CertificatesBinding(),
     ),
     GetPage(
       name: Routes.VEHICLES,
