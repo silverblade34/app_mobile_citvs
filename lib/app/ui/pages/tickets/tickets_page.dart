@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/app/ui/pages/widgets/button_filter.dart';
+import 'package:citvs/app/ui/pages/widgets/button_filter.dart';
 // -----------------------------Importaciones para los layout----------------------------------
-import 'package:flutter_application_1/app/ui/pages/widgets/navigation/custom_app_bar.dart';
-import 'package:flutter_application_1/app/ui/pages/widgets/navigation/custom_bottom_bar.dart';
-import 'package:flutter_application_1/app/ui/pages/widgets/navigation/navigation_drawer.dart';
+import 'package:citvs/app/ui/pages/widgets/navigation/custom_app_bar.dart';
+import 'package:citvs/app/ui/pages/widgets/navigation/custom_bottom_bar.dart';
+import 'package:citvs/app/ui/pages/widgets/navigation/navigation_drawer.dart';
 //---------------------------------------------------------------------------------------------
-import 'package:flutter_application_1/app/controllers/tickets_controller.dart';
-import 'package:flutter_application_1/app/ui/pages/tickets/widgets/cards_tickets.dart';
-import 'package:flutter_application_1/app/ui/pages/widgets/date_picker.dart';
-import 'package:flutter_application_1/app/ui/pages/widgets/text_select.dart';
+import 'package:citvs/app/controllers/tickets_controller.dart';
+import 'package:citvs/app/ui/pages/tickets/widgets/cards_tickets.dart';
+import 'package:citvs/app/ui/pages/widgets/date_picker.dart';
+import 'package:citvs/app/ui/pages/widgets/text_select.dart';
 import 'package:get/get.dart';
 
 class TicketsPage extends GetView<TicketsController> {
@@ -34,6 +34,7 @@ class TicketsPage extends GetView<TicketsController> {
                   children: [
                     const TextSelect(
                       textLabel: "Sede",
+                      iconData: Icons.domain,
                     ),
                     Expanded(
                       child: Obx(() => Container(
@@ -94,7 +95,7 @@ class TicketsPage extends GetView<TicketsController> {
                         title: 'Boletas Emitidas',
                         value: controller.ballotsIssued,
                         backgroundColor:
-                            const Color.fromARGB(255, 125, 185, 224),
+                            const Color.fromARGB(255, 112, 156, 201),
                       ),
                       CardTicket(
                         title: 'Facturas Emitidas',

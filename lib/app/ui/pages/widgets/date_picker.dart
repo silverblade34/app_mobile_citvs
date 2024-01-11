@@ -32,7 +32,10 @@ class DatePickerState extends State<DatePicker> {
       child: TextField(
         controller: _date,
         decoration: InputDecoration(
-          icon: const Icon(Icons.calendar_today_rounded),
+          icon: const Icon(
+            Icons.calendar_today_rounded,
+            color: Color.fromARGB(255, 85, 123, 161),
+          ),
           labelText: widget
               .label, // Utiliza widget.label para obtener el valor dinámico
         ),

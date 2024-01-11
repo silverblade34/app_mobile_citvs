@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/app/routes/pages.dart';
+import 'package:citvs/app/routes/pages.dart';
 import 'package:get/get.dart';
 
 class NavigationLayoutController extends GetxController {
@@ -34,7 +34,7 @@ class NavigationLayoutController extends GetxController {
       selectedIcon: Icons.directions_car_filled,
       icon: Icons.directions_car_filled_outlined,
       label: 'Vehiculos',
-      route: Routes.REVIEWS,
+      route: Routes.VEHICLES,
     ),
   ];
 }

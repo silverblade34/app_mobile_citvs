@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/app/ui/pages/widgets/button_filter.dart';
+import 'package:citvs/app/ui/pages/widgets/button_filter.dart';
 // -----------------------------Importaciones para los layout----------------------------------
-import 'package:flutter_application_1/app/ui/pages/widgets/navigation/custom_app_bar.dart';
-import 'package:flutter_application_1/app/ui/pages/widgets/navigation/custom_bottom_bar.dart';
-import 'package:flutter_application_1/app/ui/pages/widgets/navigation/navigation_drawer.dart';
+import 'package:citvs/app/ui/pages/widgets/navigation/custom_app_bar.dart';
+import 'package:citvs/app/ui/pages/widgets/navigation/custom_bottom_bar.dart';
+import 'package:citvs/app/ui/pages/widgets/navigation/navigation_drawer.dart';
 //---------------------------------------------------------------------------------------------
-import 'package:flutter_application_1/app/controllers/comparison_controller.dart';
-import 'package:flutter_application_1/app/ui/pages/comparison/widgets/table_dynamic.dart';
-import 'package:flutter_application_1/app/ui/pages/widgets/text_select.dart';
+import 'package:citvs/app/controllers/comparison_controller.dart';
+import 'package:citvs/app/ui/pages/comparison/widgets/table_dynamic.dart';
+import 'package:citvs/app/ui/pages/widgets/text_select.dart';
 import 'package:get/get.dart';
 
 class ComparisonPage extends GetView<ComparisonController> {
@@ -34,6 +34,7 @@ class ComparisonPage extends GetView<ComparisonController> {
                   children: [
                     const TextSelect(
                       textLabel: "Sede",
+                      iconData: Icons.domain,
                     ),
                     Expanded(
                       child: Obx(
@@ -72,6 +73,7 @@ class ComparisonPage extends GetView<ComparisonController> {
                   children: [
                     const TextSelect(
                       textLabel: "Tipo",
+                      iconData: Icons.description,
                     ),
                     Expanded(
                       child: Obx(

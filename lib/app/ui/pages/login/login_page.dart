@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/app/controllers/login_controller.dart';
-import 'package:flutter_application_1/app/ui/pages/login/widgets/button.dart';
-import 'package:flutter_application_1/app/ui/pages/login/widgets/text_field.dart';
-import 'package:flutter_application_1/app/ui/pages/login/widgets/text_pass.dart';
-import 'package:flutter_application_1/app/utils/global.colors.dart';
+import 'package:citvs/app/controllers/login_controller.dart';
+import 'package:citvs/app/ui/pages/login/widgets/button.dart';
+import 'package:citvs/app/ui/pages/login/widgets/text_field.dart';
+import 'package:citvs/app/ui/pages/login/widgets/text_pass.dart';
+import 'package:citvs/app/utils/global.colors.dart';
 import 'package:get/get.dart';
 
 class LoginPage extends GetView<LoginController> {

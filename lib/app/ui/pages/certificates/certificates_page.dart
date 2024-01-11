@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/app/controllers/certificates_controller.dart';
+import 'package:citvs/app/controllers/certificates_controller.dart';
 import 'package:get/get.dart';
 
 class CertificatesPage extends GetView<CertificatesController> {

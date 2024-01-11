@@ -13,14 +13,9 @@ class ButtonFilter extends StatelessWidget {
         alignment: Alignment.center,
         height: 45,
         decoration: BoxDecoration(
-            color: const Color.fromARGB(255, 94, 172, 164),
-            borderRadius: BorderRadius.circular(10),
-            boxShadow: [
-              BoxShadow(
-                color: Colors.black.withOpacity(0.1),
-                blurRadius: 10,
-              ),
-            ]),
+          color: const Color.fromARGB(255, 103, 185, 177),
+          borderRadius: BorderRadius.circular(10),
+        ),
         child: const Text(
           'Filtrar',
           style: TextStyle(

@@ -1,12 +1,14 @@
-import 'package:flutter_application_1/app/bindings/comparison_binding.dart';
-import 'package:flutter_application_1/app/bindings/login_binding.dart';
-import 'package:flutter_application_1/app/bindings/reviews_binding.dart';
-import 'package:flutter_application_1/app/bindings/tickets_binding.dart';
-import 'package:flutter_application_1/app/ui/pages/comparison/comparison_page.dart';
-import 'package:flutter_application_1/app/ui/pages/login/login_page.dart';
-import 'package:flutter_application_1/app/ui/pages/reviews/reviews_page.dart';
-import 'package:flutter_application_1/app/ui/pages/splash_page.dart';
-import 'package:flutter_application_1/app/ui/pages/tickets/tickets_page.dart';
+import 'package:citvs/app/bindings/comparison_binding.dart';
+import 'package:citvs/app/bindings/login_binding.dart';
+import 'package:citvs/app/bindings/reviews_binding.dart';
+import 'package:citvs/app/bindings/tickets_binding.dart';
+import 'package:citvs/app/bindings/vehicles_binding.dart';
+import 'package:citvs/app/ui/pages/comparison/comparison_page.dart';
+import 'package:citvs/app/ui/pages/login/login_page.dart';
+import 'package:citvs/app/ui/pages/reviews/reviews_page.dart';
+import 'package:citvs/app/ui/pages/splash_page.dart';
+import 'package:citvs/app/ui/pages/tickets/tickets_page.dart';
+import 'package:citvs/app/ui/pages/vehicles/vehicles_page.dart';
 import 'package:get/get.dart';
 part './routes.dart';
 
@@ -37,6 +39,11 @@ abstract class AppPages {
       name: Routes.COMPARISON,
       page: () => const ComparisonPage(),
       binding: ComparisonBinding(),
+    ),
+    GetPage(
+      name: Routes.VEHICLES,
+      page: () => const VehiclesPage(),
+      binding: VehiclesBinding(),
     )
   ];
 }

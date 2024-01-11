@@ -1,4 +1,4 @@
-import 'package:flutter_application_1/app/controllers/login_controller.dart';
+import 'package:citvs/app/controllers/login_controller.dart';
 import 'package:get/get.dart';
 
 class LoginBinding implements Bindings {
