@@ -4,13 +4,17 @@ import 'package:get_storage/get_storage.dart';
 import 'package:intl/intl.dart';
 
 class CertificatesController extends GetxController {
- final box = GetStorage();
+  final box = GetStorage();
   RxString dateFrom = RxString("");
   RxString dateTo = RxString("");
   RxString username = RxString("");
   DateTime selectedDate = DateTime.now();
 
   RxString valueLapDropdown = RxString('-');
+// Declaracion de variables para las cantidad de tipos de resultados de inspección
+  RxInt approvedQuantity = RxInt(0);
+  RxInt disapprovedQuantity = RxInt(0);
+  RxInt voidedQuantity = RxInt(0);
 
   RxList<DropdownMenuItem<String>> itemsDropDown =
       RxList<DropdownMenuItem<String>>(

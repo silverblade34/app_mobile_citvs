@@ -20,7 +20,7 @@ class CustomBottomNavigationBar extends StatelessWidget {
       onDestinationSelected: (int index) {
         navigationCL.selectedIndex.value = index;
         final selectedDestination = navigationCL.navigationDestinations[index];
-        Get.offAllNamed(selectedDestination.route);
+        Get.offNamed(selectedDestination.route);
       },
       selectedIndex: initialIndex,
       destinations: List<Widget>.generate(

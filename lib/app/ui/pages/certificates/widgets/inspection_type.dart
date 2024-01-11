@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class TypeVehicle extends StatelessWidget {
-  const TypeVehicle({
+class InspectionType extends StatelessWidget {
+  const InspectionType({
     super.key,
     required this.label,
     required this.icon,
@@ -44,7 +44,7 @@ class TypeVehicle extends StatelessWidget {
             height: 35,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(4),
-              color: Color.fromARGB(255, 106, 157, 207),
+              color: const Color.fromARGB(255, 106, 157, 207),
             ),
             child: Text(
               '${quantity.value}',

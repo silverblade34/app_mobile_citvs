@@ -1,13 +1,13 @@
 import 'package:citvs/app/bindings/certificates_binding.dart';
 import 'package:citvs/app/bindings/comparison_binding.dart';
+import 'package:citvs/app/bindings/home_binding.dart';
 import 'package:citvs/app/bindings/login_binding.dart';
-import 'package:citvs/app/bindings/reviews_binding.dart';
 import 'package:citvs/app/bindings/tickets_binding.dart';
 import 'package:citvs/app/bindings/vehicles_binding.dart';
 import 'package:citvs/app/ui/pages/certificates/certificates_page.dart';
 import 'package:citvs/app/ui/pages/comparison/comparison_page.dart';
+import 'package:citvs/app/ui/pages/home/home_page.dart';
 import 'package:citvs/app/ui/pages/login/login_page.dart';
-import 'package:citvs/app/ui/pages/reviews/reviews_page.dart';
 import 'package:citvs/app/ui/pages/splash_page.dart';
 import 'package:citvs/app/ui/pages/tickets/tickets_page.dart';
 import 'package:citvs/app/ui/pages/vehicles/vehicles_page.dart';
@@ -28,9 +28,9 @@ abstract class AppPages {
       transition: Transition.fadeIn,
     ),
     GetPage(
-      name: Routes.REVIEWS,
-      page: () => const ReviewsPage(),
-      binding: ReviewsBinding(),
+      name: Routes.HOME,
+      page: () => const HomePage(),
+      binding: HomeBinding(),
     ),
     GetPage(
       name: Routes.TICKETS,

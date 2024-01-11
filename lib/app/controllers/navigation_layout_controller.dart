@@ -1,16 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:citvs/app/routes/pages.dart';
+import 'package:get_storage/get_storage.dart';
 import 'package:get/get.dart';
 
 class NavigationLayoutController extends GetxController {
+  final box = GetStorage();
   final Rx<int> selectedIndex = 0.obs;
+  final RxString username = RxString("");
 
   List<Destination> navigationDestinations = [
     Destination(
-      selectedIcon: Icons.dashboard_customize,
-      icon: Icons.dashboard_customize_outlined,
-      label: 'Revisiones',
-      route: Routes.REVIEWS,
+      selectedIcon: Icons.home,
+      icon: Icons.home_outlined,
+      label: 'Home',
+      route: Routes.HOME,
     ),
     Destination(
       selectedIcon: Icons.paid,
@@ -37,6 +40,22 @@ class NavigationLayoutController extends GetxController {
       route: Routes.VEHICLES,
     ),
   ];
+
+  @override
+  void onReady() {
+    setUsername();
+    super.onReady();
+  }
+
+  void setUsername() {
+    username.value = box.read("username");
+    // Convertir la primera letra a mayúscula
+    if (username.isNotEmpty) {
+      String usernameValue = username.value;
+      username.value = usernameValue[0].toUpperCase() +
+          usernameValue.substring(1).toLowerCase();
+    }
+  }
 }
 
 class Destination {

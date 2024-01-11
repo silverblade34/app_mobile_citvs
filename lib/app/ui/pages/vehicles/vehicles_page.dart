@@ -85,7 +85,7 @@ class VehiclesPage extends GetView<VehiclesController> {
                   },
                 ),
                 const SizedBox(
-                  height: 30,
+                  height: 40,
                 ),
                 Column(
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -96,7 +96,7 @@ class VehiclesPage extends GetView<VehiclesController> {
                       quantity: vehiclesCL.heavyVehicleQuantity,
                     ),
                     const SizedBox(
-                      height: 15,
+                      height: 20,
                     ),
                     TypeVehicle(
                       label: "Liviano",
@@ -104,7 +104,7 @@ class VehiclesPage extends GetView<VehiclesController> {
                       quantity: vehiclesCL.lightVehicleQuantity,
                     ),
                     const SizedBox(
-                      height: 15,
+                      height: 20,
                     ),
                     TypeVehicle(
                       label: "Menor",

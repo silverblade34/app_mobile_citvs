@@ -11,29 +11,28 @@ String credentialUserToJson(CredentialUser data) => json.encode(data.toJson());
 
 class CredentialUser {
   dynamic message;
-  Data? data; // Ahora Data es opcional y puede ser null
+  Data data; // Ahora Data no puede ser nulo
   bool status;
 
   CredentialUser({
     required this.message,
-    this.data,
+    required this.data, // Cambio: data no puede ser nulo
     required this.status,
   });
 
   factory CredentialUser.fromJson(Map<String, dynamic> json) => CredentialUser(
         message: json["message"],
-        data: json["data"] != null ? Data.fromJson(json["data"]) : null,
+        data: Data.fromJson(json["data"]),
         status: json["status"],
       );
 
   Map<String, dynamic> toJson() => {
         "message": message,
-        "data":
-            // ignore: prefer_null_aware_operators
-            data != null ? data!.toJson() : null, // Cambio: manejo de data null
+        "data": data.toJson(), // Cambio: data no puede ser nulo
         "status": status,
       };
 }
+
 
 class Data {
   String token;

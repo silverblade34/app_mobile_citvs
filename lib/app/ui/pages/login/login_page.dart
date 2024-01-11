@@ -11,63 +11,67 @@ class LoginPage extends GetView<LoginController> {
 
   @override
   Widget build(BuildContext context) {
+    double screenHeight = MediaQuery.of(context).size.height;
+
     return Scaffold(
       body: SingleChildScrollView(
         child: SafeArea(
           child: Container(
             width: double.infinity,
+            height: screenHeight,
             padding: const EdgeInsets.all(20.0),
-            child: GetBuilder<LoginController>(builder: (loginCL) {
-              return Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  const SizedBox(
-                    height: 30,
-                  ),
-                  Container(
-                    alignment: Alignment.center,
-                    child: Image.asset(
-                      'assets/images/logo.png',
-                      height: 220,
+            child: GetBuilder<LoginController>(
+              builder: (loginCL) {
+                return Column(
+                  mainAxisAlignment:
+                      MainAxisAlignment.center, // Centra verticalmente
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Container(
+                      alignment: Alignment.center,
+                      child: Image.asset(
+                        'assets/images/logo.png',
+                        height: 220,
+                      ),
                     ),
-                  ),
-                  const SizedBox(
-                    height: 20,
-                  ),
-                  Text(
-                    'Ingrese sus credenciales',
-                    style: TextStyle(
-                      color: GlobalColors.textColor,
-                      fontSize: 16,
-                      fontWeight: FontWeight.w500,
+                    const SizedBox(
+                      height: 20,
                     ),
-                  ),
-                  const SizedBox(
-                    height: 15,
-                  ),
-                  //// EMAIL INPUT
-                  TextFieldWidget(
-                    controller: loginCL.username,
-                    text: 'Usuario',
-                    icon: Icons.person,
-                    obscure: false,
-                    textInputType: TextInputType.text,
-                  ),
-                  const SizedBox(
-                    height: 15,
-                  ),
-                  //// PASSWORD INPUT
-                  TextFieldPass(
-                      controller: loginCL.password, obs: loginCL.obscurePass),
-                  const SizedBox(
-                    height: 15,
-                  ),
-                  ButtonGlobal(onTap: () {
-                    loginCL.validateFields();
-                  }),
-                ],
-              );
-            }),
+                    Text(
+                      'Ingrese sus credenciales',
+                      style: TextStyle(
+                        color: GlobalColors.textColor,
+                        fontSize: 16,
+                        fontWeight: FontWeight.w500,
+                      ),
+                    ),
+                    const SizedBox(
+                      height: 15,
+                    ),
+                    //// EMAIL INPUT
+                    TextFieldWidget(
+                      controller: loginCL.username,
+                      text: 'Usuario',
+                      icon: Icons.person,
+                      obscure: false,
+                      textInputType: TextInputType.text,
+                    ),
+                    const SizedBox(
+                      height: 15,
+                    ),
+                    //// PASSWORD INPUT
+                    TextFieldPass(
+                        controller: loginCL.password, obs: loginCL.obscurePass),
+                    const SizedBox(
+                      height: 15,
+                    ),
+                    ButtonGlobal(onTap: () {
+                      loginCL.validateFields();
+                    }),
+                  ],
+                );
+              },
+            ),
           ),
         ),
       ),

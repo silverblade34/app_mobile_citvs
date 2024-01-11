@@ -95,7 +95,7 @@ flutter:
       fonts:
         - asset: assets/fonts/Poppins-Regular.ttf
         - asset: assets/fonts/Poppins-Light.ttf
-          weight: 700
+          weight: 800
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages

@@ -7,7 +7,7 @@ import 'package:citvs/app/ui/pages/widgets/navigation/navigation_drawer.dart';
 import 'package:citvs/app/controllers/certificates_controller.dart';
 import 'package:citvs/app/ui/pages/widgets/button_filter.dart';
 import 'package:citvs/app/ui/pages/widgets/date_picker.dart';
-import 'package:citvs/app/ui/pages/reviews/widgets/pie_chart.dart';
+import 'package:citvs/app/ui/pages/certificates/widgets/inspection_type.dart';
 import 'package:citvs/app/ui/pages/widgets/text_select.dart';
 import 'package:get/get.dart';
 
@@ -83,7 +83,35 @@ class CertificatesPage extends GetView<CertificatesController> {
                   ButtonFilter(onTap: () async {
                     await certificatesCL.doSearch();
                   }),
-                  const PieChart()
+                  const SizedBox(
+                    height: 40,
+                  ),
+                  Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      InspectionType(
+                        label: "Aprobados",
+                        icon: Icons.check_circle,
+                        quantity: certificatesCL.approvedQuantity,
+                      ),
+                      const SizedBox(
+                        height: 20,
+                      ),
+                      InspectionType(
+                        label: "Desaprobados",
+                        icon: Icons.error,
+                        quantity: certificatesCL.disapprovedQuantity,
+                      ),
+                      const SizedBox(
+                        height: 20,
+                      ),
+                      InspectionType(
+                        label: "Anulados",
+                        icon: Icons.cancel,
+                        quantity: certificatesCL.voidedQuantity,
+                      ),
+                    ],
+                  ),
                 ],
               ),
             ),
