@@ -24,7 +24,7 @@ class TicketsPage extends GetView<TicketsController> {
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
                     const TextSelect(
-                      textLabel: "Sede",
+                      textLabel: "SEDE",
                       iconData: Icons.domain,
                     ),
                     Expanded(
@@ -108,18 +108,17 @@ class TicketsPage extends GetView<TicketsController> {
                           child: Text(
                             "Ingresos totales",
                             style: TextStyle(
-                              fontFamily:
-                                  'Poppins', // Establece la fuente Poppins
                               color: Color.fromARGB(255, 66, 66, 66),
                             ),
                           ),
                         ),
                         Container(
-                          width: 200,
+                          width: 180,
+                          height: 60,
                           decoration: BoxDecoration(
                             color: const Color.fromARGB(255, 122, 177,
                                 124), // Color de fondo del "botón"
-                            borderRadius: BorderRadius.circular(15),
+                            borderRadius: BorderRadius.circular(8),
                           ),
                           padding: const EdgeInsets.all(8),
                           child: Row(
@@ -137,7 +136,6 @@ class TicketsPage extends GetView<TicketsController> {
                                 style: const TextStyle(
                                   fontSize: 20,
                                   color: Colors.white,
-                                  fontWeight: FontWeight.bold,
                                 ),
                               ),
                             ],

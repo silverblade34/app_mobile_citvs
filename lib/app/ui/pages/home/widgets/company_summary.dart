@@ -16,7 +16,7 @@ class CompanySummary extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       padding: const EdgeInsets.all(20),
-      margin: const EdgeInsets.only(bottom: 15),
+      margin: const EdgeInsets.symmetric(horizontal: 0, vertical: 10),
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(15),
@@ -24,7 +24,7 @@ class CompanySummary extends StatelessWidget {
           BoxShadow(
             color: const Color.fromARGB(255, 182, 182, 182).withOpacity(0.1),
             spreadRadius: 3,
-            blurRadius: 3,
+            blurRadius: 4,
             offset: const Offset(0, 1),
           ),
         ],
@@ -37,7 +37,7 @@ class CompanySummary extends StatelessWidget {
             children: [
               Container(
                 decoration: BoxDecoration(
-                  color: Color.fromARGB(255, 47, 170, 158),
+                  color: const Color.fromARGB(255, 47, 170, 158),
                   borderRadius: BorderRadius.circular(15),
                 ),
                 padding:
@@ -51,10 +51,13 @@ class CompanySummary extends StatelessWidget {
                   ),
                 ),
               ),
-              const Icon(
-                Icons.domain,
-                color: Color.fromARGB(255, 106, 157, 207),
-              )
+              const Center(
+                child: Icon(
+                  Icons.domain,
+                  color: Color.fromARGB(255, 106, 157, 207),
+                  size: 30,
+                ),
+              ),
             ],
           ),
           const SizedBox(
@@ -67,19 +70,11 @@ class CompanySummary extends StatelessWidget {
                 children: [
                   const Row(
                     children: [
-                      Icon(
-                        Icons.description,
-                        color: Color.fromARGB(255, 100, 100, 100),
-                        size: 17,
-                      ),
-                      SizedBox(
-                        width: 7,
-                      ),
                       Text(
                         "Inspecciones",
                         style: TextStyle(
                           fontSize: 16,
-                          color: Color.fromARGB(255, 87, 87, 87),
+                          color: Color.fromARGB(255, 110, 110, 110),
                         ),
                       ),
                     ],
@@ -94,10 +89,10 @@ class CompanySummary extends StatelessWidget {
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(8),
                       color: const Color.fromARGB(
-                          255, 255, 255, 255), // Color de fondo blanco
+                          255, 255, 255, 255), 
                       border: Border.all(
                         color: const Color.fromARGB(
-                            255, 106, 157, 207), // Color de borde azul
+                            255, 106, 157, 207), 
                         width: 1, // Ancho del borde
                       ),
                     ),
@@ -105,7 +100,7 @@ class CompanySummary extends StatelessWidget {
                       '$numberOfInspections',
                       style: const TextStyle(
                         fontSize: 18,
-                        color: Color.fromARGB(255, 54, 54, 54),
+                        color: Color.fromARGB(255, 110, 110, 110),
                       ),
                     ),
                   ),
@@ -115,19 +110,11 @@ class CompanySummary extends StatelessWidget {
                 children: [
                   const Row(
                     children: [
-                      Icon(
-                        Icons.payment,
-                        color: Color.fromARGB(255, 100, 100, 100),
-                        size: 17,
-                      ),
-                      SizedBox(
-                        width: 7,
-                      ),
                       Text(
                         "Facturación",
                         style: TextStyle(
                           fontSize: 16,
-                          color: Color.fromARGB(255, 87, 87, 87),
+                          color: Color.fromARGB(255, 110, 110, 110),
                         ),
                       ),
                     ],
@@ -153,7 +140,7 @@ class CompanySummary extends StatelessWidget {
                       '$billingAmount',
                       style: const TextStyle(
                         fontSize: 18,
-                        color: Color.fromARGB(255, 54, 54, 54),
+                        color: Color.fromARGB(255, 110, 110, 110),
                       ),
                     ),
                   ),

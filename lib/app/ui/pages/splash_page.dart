@@ -10,7 +10,7 @@ class SplashPage extends StatelessWidget {
       Get.to(LoginPage());
     });
     return Scaffold(
-      backgroundColor: const Color.fromARGB(255, 233, 255, 253),
+      backgroundColor: Color.fromARGB(255, 255, 255, 255),
       body: Center(
           child: Column(
         mainAxisAlignment: MainAxisAlignment.center,

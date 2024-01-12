@@ -51,25 +51,25 @@ class TableDynamic extends StatelessWidget {
       'lastYear': 35631,
     },
     {
-      'monthName': 'Setiem...',
+      'monthName': 'Setiembre',
       'firstYear': 25630,
       'intermediateYear': 25630,
       'lastYear': 35630,
     },
     {
-      'monthName': 'Octubr..',
+      'monthName': 'Octubre',
       'firstYear': 25631,
       'intermediateYear': 25631,
       'lastYear': 35631,
     },
     {
-      'monthName': 'Noviem..',
+      'monthName': 'Noviembre',
       'firstYear': 25630,
       'intermediateYear': 25630,
       'lastYear': 35630,
     },
     {
-      'monthName': 'Diciem..',
+      'monthName': 'Diciembre',
       'firstYear': 25631,
       'intermediateYear': 25631,
       'lastYear': 35631,
@@ -133,8 +133,7 @@ class TableDynamic extends StatelessWidget {
         child: Text(
           text,
           style: const TextStyle(
-            color: Color.fromARGB(255, 99, 99, 99),
-            fontFamily: 'Poppins',
+            color: Color.fromARGB(255, 110, 110, 110),
           ),
         ),
       ),

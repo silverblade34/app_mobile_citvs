@@ -24,7 +24,7 @@ class VehiclesPage extends GetView<VehiclesController> {
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
                     const TextSelect(
-                      textLabel: "Sede",
+                      textLabel: "SEDE",
                       iconData: Icons.domain,
                     ),
                     Expanded(

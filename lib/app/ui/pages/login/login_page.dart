@@ -14,7 +14,7 @@ class LoginPage extends GetView<LoginController> {
     double screenHeight = MediaQuery.of(context).size.height;
 
     return Scaffold(
-      backgroundColor: const Color.fromARGB(245, 249, 252, 255),
+      backgroundColor: Color.fromARGB(245, 255, 255, 255),
       body: SingleChildScrollView(
         child: SafeArea(
           child: Container(

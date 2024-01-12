@@ -25,7 +25,7 @@ class CertificatesPage extends GetView<CertificatesController> {
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
                       const TextSelect(
-                        textLabel: "Sede",
+                        textLabel: "SEDE",
                         iconData: Icons.domain,
                       ),
                       Expanded(

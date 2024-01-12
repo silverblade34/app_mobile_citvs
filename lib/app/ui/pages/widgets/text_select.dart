@@ -17,13 +17,12 @@ class TextSelect extends StatelessWidget {
             size: 25,
             color: const Color.fromARGB(255, 85, 123, 161),
           ),
-          const SizedBox(width: 8),
+          const SizedBox(width: 10),
           Text(
             textLabel,
             style: const TextStyle(
-              fontSize: 18,
+              fontSize: 16,
               color: Color.fromARGB(255, 80, 80, 80),
-              fontFamily: 'Poppins',
             ),
           ),
         ],

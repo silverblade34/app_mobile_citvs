@@ -15,7 +15,7 @@ class HomePage extends GetView<HomeController> {
       body: SafeArea(
         child: SingleChildScrollView(
           child: Container(
-            padding: const EdgeInsets.all(25.0),
+            padding: const EdgeInsets.all(30.0),
             child: Column(
               children: [
                 ListView.builder(

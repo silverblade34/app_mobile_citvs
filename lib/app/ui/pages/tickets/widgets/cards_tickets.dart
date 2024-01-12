@@ -26,8 +26,7 @@ class CardTicket extends StatelessWidget {
                 title,
                 textAlign: TextAlign.center,
                 style: const TextStyle(
-                  fontFamily: 'Poppins', // Establece la fuente Poppins
-                  color: Color.fromARGB(255, 66, 66, 66),
+                  color: Color.fromARGB(255, 110, 110, 110),
                 ),
               ),
             ),
@@ -35,15 +34,18 @@ class CardTicket extends StatelessWidget {
               alignment: Alignment.center,
               height: 60,
               decoration: BoxDecoration(
-                color: backgroundColor,
                 borderRadius: BorderRadius.circular(8),
+                border: Border.all(
+                  color: backgroundColor, // Color de borde azul
+                  width: 1, // Ancho del borde
+                ),
               ),
               child: Obx(
                 () => Text(
                   '${value.value}', // Coloca el valor dinámico aquí
                   style: const TextStyle(
                     fontSize: 20,
-                    color: Colors.white,
+                    color: Color.fromARGB(255, 110, 110, 110),
                     fontWeight: FontWeight.bold,
                   ),
                 ),

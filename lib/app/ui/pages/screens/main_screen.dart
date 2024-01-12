@@ -18,7 +18,14 @@ class _MainScreenState extends State<MainScreen> {
     return Scaffold(
       appBar: const CustomAppBar(),
       drawer: const NavigationDrawerLayout(),
-      bottomNavigationBar: Obx(() => NavigationBar(
+      bottomNavigationBar: Obx(
+        () => Container(
+          decoration: const BoxDecoration(
+            border: Border(
+                top: BorderSide(
+                    width: 0.3, color: Color.fromARGB(255, 97, 97, 97))),
+          ),
+          child: NavigationBar(
             height: 80,
             backgroundColor: Colors.white,
             elevation: 0,
@@ -36,7 +43,9 @@ class _MainScreenState extends State<MainScreen> {
                 label: mainScreenCL.navigationDestinations[index].label,
               ),
             ),
-          )),
+          ),
+        ),
+      ),
       extendBody: true,
       body: Obx(() => mainScreenCL.screens[mainScreenCL.selectedIndex.value]()),
     );

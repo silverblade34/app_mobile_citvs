@@ -24,7 +24,7 @@ class ComparisonPage extends GetView<ComparisonController> {
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
                     const TextSelect(
-                      textLabel: "Sede",
+                      textLabel: "SEDE",
                       iconData: Icons.domain,
                     ),
                     Expanded(
@@ -63,7 +63,7 @@ class ComparisonPage extends GetView<ComparisonController> {
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
                     const TextSelect(
-                      textLabel: "Tipo",
+                      textLabel: "TIPO",
                       iconData: Icons.description,
                     ),
                     Expanded(

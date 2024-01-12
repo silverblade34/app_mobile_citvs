@@ -14,14 +14,14 @@ class TypeVehicle extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
       width: MediaQuery.of(context).size.width * 0.8,
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           Icon(
             icon,
-            size: 45,
+            size: 40,
             color: const Color.fromARGB(255, 126, 126, 126),
           ),
           const SizedBox(
@@ -30,8 +30,7 @@ class TypeVehicle extends StatelessWidget {
           Text(
             label,
             style: const TextStyle(
-              fontSize: 18,
-              fontFamily: 'Poppins',
+              fontSize: 16,
               color: Color.fromARGB(255, 110, 110, 110),
             ),
           ),
@@ -44,13 +43,16 @@ class TypeVehicle extends StatelessWidget {
             height: 35,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(4),
-              color: Color.fromARGB(255, 106, 157, 207),
+              border: Border.all(
+                color: const Color.fromARGB(255, 106, 157, 207),
+                width: 1,
+              ),
             ),
             child: Text(
               '${quantity.value}',
               style: const TextStyle(
                 fontSize: 18,
-                color: Color.fromARGB(255, 255, 255, 255),
+                color: Color.fromARGB(255, 110, 110, 110),
               ),
             ),
           ),
