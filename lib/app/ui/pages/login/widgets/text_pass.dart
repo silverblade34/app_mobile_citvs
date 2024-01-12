@@ -8,7 +8,9 @@ Obx TextFieldPass(
       controller: controller,
       obscureText: obs.value,
       decoration: InputDecoration(
-      border: const OutlineInputBorder(
+        filled: true,
+        fillColor: Colors.white,
+        border: const OutlineInputBorder(
           borderRadius: BorderRadius.all(
             Radius.circular(10.0),
           ),

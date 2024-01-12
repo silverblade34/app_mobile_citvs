@@ -8,6 +8,7 @@ import 'package:citvs/app/ui/pages/certificates/certificates_page.dart';
 import 'package:citvs/app/ui/pages/comparison/comparison_page.dart';
 import 'package:citvs/app/ui/pages/home/home_page.dart';
 import 'package:citvs/app/ui/pages/login/login_page.dart';
+import 'package:citvs/app/ui/pages/screens/main_screen.dart';
 import 'package:citvs/app/ui/pages/splash_page.dart';
 import 'package:citvs/app/ui/pages/tickets/tickets_page.dart';
 import 'package:citvs/app/ui/pages/vehicles/vehicles_page.dart';
@@ -19,13 +20,15 @@ abstract class AppPages {
     GetPage(
       name: Routes.SPLASH,
       page: () => SplashPage(),
-      transition: Transition.fadeIn,
     ),
     GetPage(
       name: Routes.LOGIN,
       page: () => LoginPage(),
       binding: LoginBinding(),
-      transition: Transition.fadeIn,
+    ),
+     GetPage(
+      name: Routes.MAIN,
+      page: () => MainScreen(),
     ),
     GetPage(
       name: Routes.HOME,

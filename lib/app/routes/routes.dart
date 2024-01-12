@@ -3,6 +3,7 @@ part of './pages.dart';
 abstract class Routes {
   static const INITIAL = '/splash';
   static const HOME = '/home';
+  static const MAIN = '/main';
   static const LOGIN = '/login';
   static const SPLASH = '/splash';
   static const NAVIGATION = '/navigation';

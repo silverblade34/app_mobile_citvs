@@ -10,7 +10,7 @@ void main() async {
   runApp(
     GetMaterialApp(
       debugShowCheckedModeBanner: false,
-      initialRoute: Routes.INITIAL,
+      initialRoute: Routes.MAIN,
       theme: ThemeData(
         useMaterial3: true,
         colorSchemeSeed: Colors.teal,

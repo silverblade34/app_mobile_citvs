@@ -10,10 +10,10 @@ class ButtonGlobal extends StatelessWidget {
      onTap: onTap,
       child: Container(
         alignment: Alignment.center,
-        height: 55,
+        height: 60,
         decoration: BoxDecoration(
             color: Colors.teal,
-            borderRadius: BorderRadius.circular(6),
+            borderRadius: BorderRadius.circular(10),
             boxShadow: [
               BoxShadow(
                 color: Colors.black.withOpacity(0.1),
@@ -21,7 +21,7 @@ class ButtonGlobal extends StatelessWidget {
               ),
             ]),
         child: const Text(
-          'Ingresar',
+          'INGRESAR',
           style: TextStyle(
             color: Colors.white,
             fontWeight: FontWeight.w600,
