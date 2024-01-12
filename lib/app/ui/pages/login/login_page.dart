@@ -3,7 +3,7 @@ import 'package:citvs/app/controllers/login_controller.dart';
 import 'package:citvs/app/ui/pages/login/widgets/button.dart';
 import 'package:citvs/app/ui/pages/login/widgets/text_field.dart';
 import 'package:citvs/app/ui/pages/login/widgets/text_pass.dart';
-import 'package:citvs/app/utils/global.colors.dart';
+import 'package:citvs/app/utils/global_colors.dart';
 import 'package:get/get.dart';
 
 class LoginPage extends GetView<LoginController> {
@@ -14,6 +14,7 @@ class LoginPage extends GetView<LoginController> {
     double screenHeight = MediaQuery.of(context).size.height;
 
     return Scaffold(
+      backgroundColor: const Color.fromARGB(245, 249, 252, 255),
       body: SingleChildScrollView(
         child: SafeArea(
           child: Container(

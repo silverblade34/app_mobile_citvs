@@ -1,5 +1,5 @@
+import 'package:citvs/app/controllers/mainscreen_controller.dart';
 import 'package:flutter/material.dart';
-import 'package:citvs/app/controllers/navigation_layout_controller.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
@@ -9,15 +9,16 @@ class NavigationDrawerLayout extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final navigationCL = Get.find<NavigationLayoutController>(); // Usa Get.find
+    final mainScreenCL = Get.find<MainScreenController>(); // Usa Get.find
 
     return Drawer(
+      elevation: 0,
       child: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: <Widget>[
-            buildHeader(context, navigationCL),
-            buildMenuItems(context, navigationCL)
+            buildHeader(context, mainScreenCL),
+            buildMenuItems(context, mainScreenCL)
           ],
         ),
       ),
@@ -25,7 +26,7 @@ class NavigationDrawerLayout extends StatelessWidget {
   }
 
   Widget buildHeader(
-          BuildContext context, NavigationLayoutController controller) =>
+          BuildContext context, MainScreenController controller) =>
       Material(
         color: const Color.fromARGB(255, 20, 180, 164),
         child: InkWell(
@@ -74,7 +75,7 @@ class NavigationDrawerLayout extends StatelessWidget {
       );
 
   Widget buildMenuItems(
-          BuildContext context, NavigationLayoutController controller) =>
+          BuildContext context, MainScreenController controller) =>
       Column(
         children: [
           const SizedBox(
@@ -89,9 +90,7 @@ class NavigationDrawerLayout extends StatelessWidget {
               title: Text(destination.label),
               onTap: () {
                 controller.selectedIndex.value = index;
-                final selectedDestination =
-                    controller.navigationDestinations[index];
-                Get.offNamed(selectedDestination.route);
+                 Navigator.pop(context);
               },
             );
           }).toList(),

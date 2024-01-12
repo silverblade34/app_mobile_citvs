@@ -10,8 +10,9 @@ void main() async {
   runApp(
     GetMaterialApp(
       debugShowCheckedModeBanner: false,
-      initialRoute: Routes.MAIN,
+      initialRoute: Routes.INITIAL,
       theme: ThemeData(
+        fontFamily: 'Roboto',
         useMaterial3: true,
         colorSchemeSeed: Colors.teal,
       ),

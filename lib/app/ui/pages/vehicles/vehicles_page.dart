@@ -2,11 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:citvs/app/ui/pages/vehicles/widgets/type_vehicle.dart';
 import 'package:citvs/app/ui/pages/widgets/button_filter.dart';
 import 'package:citvs/app/ui/pages/widgets/date_picker.dart';
-// -----------------------------Importaciones para los layout----------------------------------
-import 'package:citvs/app/ui/pages/widgets/navigation/custom_app_bar.dart';
-import 'package:citvs/app/ui/pages/widgets/navigation/custom_bottom_bar.dart';
-import 'package:citvs/app/ui/pages/widgets/navigation/navigation_drawer.dart';
-//---------------------------------------------------------------------------------------------
 import 'package:citvs/app/controllers/vehicles_controller.dart';
 import 'package:citvs/app/ui/pages/widgets/text_select.dart';
 import 'package:get/get.dart';
@@ -18,11 +13,7 @@ class VehiclesPage extends GetView<VehiclesController> {
   Widget build(BuildContext context) {
     final vehiclesCL = Get.put(VehiclesController());
     return Scaffold(
-      appBar: const CustomAppBar(),
-      drawer: const NavigationDrawerLayout(),
-      bottomNavigationBar: const CustomBottomNavigationBar(
-        initialIndex: 4,
-      ),
+      backgroundColor: const Color.fromARGB(245, 249, 252, 255),
       body: SafeArea(
         child: SingleChildScrollView(
           child: Container(

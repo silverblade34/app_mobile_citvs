@@ -1,5 +1,6 @@
-import 'package:citvs/app/data/models/navigation/nav_model.dart';
-import 'package:citvs/app/ui/pages/screens/widgets/nav_bar.dart';
+import 'package:citvs/app/controllers/mainscreen_controller.dart';
+import 'package:citvs/app/ui/pages/screens/widgets/custom_app_bar.dart';
+import 'package:citvs/app/ui/pages/screens/widgets/navigation_drawer.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -11,115 +12,33 @@ class MainScreen extends StatefulWidget {
 }
 
 class _MainScreenState extends State<MainScreen> {
-  final homeNavKey = GlobalKey<NavigatorState>();
-  final searchNavKey = GlobalKey<NavigatorState>();
-  final notificationNavKey = GlobalKey<NavigatorState>();
-  final profileNavKey = GlobalKey<NavigatorState>();
-
-  int selectedTab = 0;
-  List<NavModel> items = [];
-
-  @override
-  void initState() {
-    super.initState();
-    items = [
-      NavModel(page: TabPage(tab: 1), navKey: homeNavKey),
-      NavModel(page: TabPage(tab: 2), navKey: searchNavKey),
-      NavModel(page: TabPage(tab: 3), navKey: notificationNavKey),
-      NavModel(page: TabPage(tab: 4), navKey: profileNavKey),
-    ];
-  }
-
   @override
   Widget build(BuildContext context) {
-    return WillPopScope(
-      onWillPop: () {
-        if (items[selectedTab].navKey.currentState?.canPop() ?? false) {
-          items[selectedTab].navKey.currentState?.pop();
-          return Future.value(false);
-        } else {
-          return Future.value(true);
-        }
-      },
-      child: Scaffold(
-        body: IndexedStack(
-          index: selectedTab,
-          children: items
-              .map(
-                (page) => Navigator(
-                  key: page.navKey,
-                  onGenerateInitialRoutes: (navigator, initialRoute) {
-                    return [MaterialPageRoute(builder: (context) => page.page)];
-                  },
-                ),
-              )
-              .toList(),
-        ),
-        bottomNavigationBar: NavBar(
-          pageIndex: selectedTab,
-          onTap: (index) {
-            if (index == selectedTab) {
-              items[index]
-                  .navKey
-                  .currentState
-                  ?.popUntil((route) => route.isFirst);
-            } else {
-              setState(() {
-                selectedTab = index;
-              });
-            }
-          },
-        ),
-      ),
-    );
-  }
-}
-
-class TabPage extends StatelessWidget {
-  final int tab;
-  const TabPage({super.key, required this.tab});
-
-  @override
-  Widget build(BuildContext context) {
-    // TODO: implement build
+    final mainScreenCL = Get.put(MainScreenController());
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Tabl $tab'),
-      ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Text('Tabl $tab'),
-            ElevatedButton(
-              onPressed: () {
-                Navigator.of(context).push(
-                    MaterialPageRoute(builder: (context) => Page(tab: tab)));
-              },
-              child: const Text('Go to page'),
-            )
-          ],
-        ),
-      ),
-    );
-  }
-}
-
-class Page extends StatelessWidget {
-  final int tab;
-
-  const Page({super.key, required this.tab});
-
-  @override
-  Widget build(BuildContext context) {
-    // TODO: implement build
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('Page Tab $tab'),
-      ),
-      body: Center(
-        child: Text('Tab $tab'),
-      ),
+      appBar: const CustomAppBar(),
+      drawer: const NavigationDrawerLayout(),
+      bottomNavigationBar: Obx(() => NavigationBar(
+            height: 80,
+            backgroundColor: Colors.white,
+            elevation: 0,
+            indicatorColor: const Color.fromARGB(255, 120, 204, 196),
+            onDestinationSelected: (int index) {
+              mainScreenCL.selectedIndex.value = index;
+            },
+            selectedIndex: mainScreenCL.selectedIndex.value,
+            destinations: List<Widget>.generate(
+              5,
+              (index) => NavigationDestination(
+                selectedIcon: Icon(
+                    mainScreenCL.navigationDestinations[index].selectedIcon),
+                icon: Icon(mainScreenCL.navigationDestinations[index].icon),
+                label: mainScreenCL.navigationDestinations[index].label,
+              ),
+            ),
+          )),
+      extendBody: true,
+      body: Obx(() => mainScreenCL.screens[mainScreenCL.selectedIndex.value]()),
     );
   }
 }

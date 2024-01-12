@@ -1,4 +1,3 @@
-import 'package:citvs/app/controllers/navigation_layout_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:citvs/app/data/repository/login_repository.dart';
 import 'package:citvs/app/routes/pages.dart';
@@ -37,8 +36,7 @@ class LoginController extends GetxController {
         await Future.delayed(
           const Duration(seconds: 1),
         ); // Puedes ajustar el tiempo según sea necesario
-        Get.put(NavigationLayoutController());
-        Get.toNamed(Routes.HOME);
+        Get.toNamed(Routes.MAIN);
         EasyLoading.dismiss();
       } else {
         EasyLoading.showInfo(validate.message);

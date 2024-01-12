@@ -1,10 +1,5 @@
 import 'package:citvs/app/controllers/home_controller.dart';
 import 'package:citvs/app/ui/pages/home/widgets/company_summary.dart';
-// -----------------------------Importaciones para los layout----------------------------------
-import 'package:citvs/app/ui/pages/widgets/navigation/custom_app_bar.dart';
-import 'package:citvs/app/ui/pages/widgets/navigation/custom_bottom_bar.dart';
-import 'package:citvs/app/ui/pages/widgets/navigation/navigation_drawer.dart';
-//---------------------------------------------------------------------------------------------
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -16,11 +11,7 @@ class HomePage extends GetView<HomeController> {
     final homeCL = Get.put(HomeController());
 
     return Scaffold(
-      appBar: const CustomAppBar(),
-      drawer: const NavigationDrawerLayout(),
-      bottomNavigationBar: const CustomBottomNavigationBar(
-        initialIndex: 0,
-      ),
+      backgroundColor: const Color.fromARGB(245,249,252,255),
       body: SafeArea(
         child: SingleChildScrollView(
           child: Container(

@@ -1,9 +1,4 @@
 import 'package:flutter/material.dart';
-// -----------------------------Importaciones para los layout----------------------------------
-import 'package:citvs/app/ui/pages/widgets/navigation/custom_app_bar.dart';
-import 'package:citvs/app/ui/pages/widgets/navigation/custom_bottom_bar.dart';
-import 'package:citvs/app/ui/pages/widgets/navigation/navigation_drawer.dart';
-//---------------------------------------------------------------------------------------------
 import 'package:citvs/app/controllers/certificates_controller.dart';
 import 'package:citvs/app/ui/pages/widgets/button_filter.dart';
 import 'package:citvs/app/ui/pages/widgets/date_picker.dart';
@@ -18,11 +13,7 @@ class CertificatesPage extends GetView<CertificatesController> {
   Widget build(BuildContext context) {
     final certificatesCL = Get.put(CertificatesController());
     return Scaffold(
-      appBar: const CustomAppBar(),
-      drawer: const NavigationDrawerLayout(),
-      bottomNavigationBar: const CustomBottomNavigationBar(
-        initialIndex: 3,
-      ),
+      backgroundColor: const Color.fromARGB(245, 249, 252, 255),
       body: SafeArea(
         child: SingleChildScrollView(
           child: Container(
