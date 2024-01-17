@@ -1,101 +1,81 @@
+import 'package:citvs/app/data/repository/common_repository.dart';
+import 'package:citvs/app/data/repository/tickets_repository.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
-// ignore: depend_on_referenced_packages
-import 'package:intl/intl.dart';
 
 class TicketsController extends GetxController {
   // Llamando al localstorage
   final box = GetStorage();
-
+  CommonRepository commonRepository = CommonRepository();
+  TicketsRepository ticketsRepository = TicketsRepository();
   RxString dateFrom = RxString("");
   RxString dateTo = RxString("");
   // Boletas emitidas
   RxInt ballotsIssued = RxInt(0);
-
   // Facturas emitidas
   RxInt issuedInvoices = RxInt(0);
-
-  // Anulaciones emitidas
-  RxInt cancellationsIssued = RxInt(0);
-
   // Ganancia total
-  RxInt totalProffit = RxInt(0);
+  RxDouble totalProffit = RxDouble(0.0);
+  RxString valueLapDropdown = RxString("0");
 
-  DateTime selectedDate = DateTime.now();
-
-  // Valor del item seleccionado por default en el dropdwon
-  RxString valueLapDropdown = RxString('-');
-
-  // Declaración estructura items dropdown
   RxList<DropdownMenuItem<String>> itemsDropDown =
-      RxList<DropdownMenuItem<String>>(
-    [
-      const DropdownMenuItem(
-        value: "-",
-        child: Text(
-          "-",
-          textAlign: TextAlign.center,
-        ),
-      )
-    ],
-  );
+      RxList<DropdownMenuItem<String>>([]);
 
   @override
-  void onReady() async {
-    final currentDate = DateTime.now();
-    final formattedDate = DateFormat('dd.MM.yyyy').format(currentDate);
+  void onInit() async {
+    if (dateFrom.value.isEmpty && dateTo.value.isEmpty) {
+      final currentDate = DateTime.now();
+      dateFrom.value = currentDate.toString().split(" ")[0];
+      dateTo.value = currentDate.toString().split(" ")[0];
+    }
 
-    dateFrom.value = formattedDate;
-    dateTo.value = formattedDate;
-    // Insertando elementos para el dropdown por default
-    List<DropdownMenuItem<String>> itemCampus = [
+    final token = box.read("token");
+    final campusData = await commonRepository.getDataCampus(token);
+
+    List<DropdownMenuItem<String>> dynamicItems = campusData.data.map((campus) {
+      return DropdownMenuItem(
+        value: campus.id.toString(), // Id como valor del DropdownMenuItem
+        child: Text(
+          " ${campus.name}",
+          textAlign: TextAlign.center,
+          style: const TextStyle(fontSize: 15),
+        ),
+      );
+    }).toList();
+
+    dynamicItems.insert(
+      0,
       const DropdownMenuItem(
-        alignment: Alignment.center,
         value: "0",
         child: Text(
-          "SELECCIONAR",
+          " SELECCIONAR",
           textAlign: TextAlign.center,
           style: TextStyle(fontSize: 15),
         ),
       ),
-      const DropdownMenuItem(
-        alignment: Alignment.center,
-        value: "ATE",
-        child: Text(
-          "ATE",
-          textAlign: TextAlign.center,
-          style: TextStyle(fontSize: 15),
-        ),
-      ),
-      const DropdownMenuItem(
-        alignment: Alignment.center,
-        value: "SANTA ANITA",
-        child: Text(
-          "SANTA ANITA",
-          textAlign: TextAlign.center,
-          style: TextStyle(fontSize: 15),
-        ),
-      ),
-      const DropdownMenuItem(
-        alignment: Alignment.center,
-        value: "CHORILLOS",
-        child: Text(
-          "CHORILLOS",
-          textAlign: TextAlign.center,
-          style: TextStyle(fontSize: 15),
-        ),
-      ),
-    ];
-    itemsDropDown.value = itemCampus;
+    );
+
+    itemsDropDown.value = dynamicItems;
     valueLapDropdown.value = "0";
-    super.onReady();
+    super.onInit();
   }
 
   doSearch() async {
-    print("--------DENTRO DEL CONTROLLER---------");
-    print("SEDE: " + valueLapDropdown.value);
-    print("FECHA DESDE: " + dateTo.value);
-    print("FECHA HASTA: " + dateFrom.value);
+    final token = box.read("token");
+    int? selectedValue = int.tryParse(valueLapDropdown.value);
+
+    if (selectedValue == null || selectedValue == 0) {
+      EasyLoading.showInfo("Selecciona una sede");
+      return;
+    }
+    EasyLoading.show(status: 'Cargando...');
+    final dataTickets = await ticketsRepository.getDataTickets(
+        token, selectedValue, dateFrom.toString(), dateTo.toString());
+    ballotsIssued.value = dataTickets.data.numberOfTickets;
+    issuedInvoices.value = dataTickets.data.numberOfInvoices;
+    totalProffit.value = dataTickets.data.totalIncome;
+    EasyLoading.dismiss();
   }
 }

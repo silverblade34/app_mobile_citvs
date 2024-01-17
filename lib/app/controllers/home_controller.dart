@@ -15,7 +15,6 @@ class HomeController extends GetxController {
   }
 
   updateCompanyData() async {
-    print("--------SE ESTA LLAMANDO A LA FUNCION--------------");
     final token = box.read("token");
     final companiesData = await homeRepository.getDataHome(token);
     companies.value = companiesData.data;

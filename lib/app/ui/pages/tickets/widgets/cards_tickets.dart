@@ -17,7 +17,7 @@ class CardTicket extends StatelessWidget {
   Widget build(BuildContext context) {
     return Expanded(
       child: Padding(
-        padding: const EdgeInsets.all(8.0), // Padding para las Column
+        padding: const EdgeInsets.all(8.0),
         child: Column(
           children: [
             Padding(
@@ -36,13 +36,13 @@ class CardTicket extends StatelessWidget {
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(8),
                 border: Border.all(
-                  color: backgroundColor, // Color de borde azul
-                  width: 1, // Ancho del borde
+                  color: backgroundColor,
+                  width: 1,
                 ),
               ),
               child: Obx(
                 () => Text(
-                  '${value.value}', // Coloca el valor dinámico aquí
+                  '${value.value}',
                   style: const TextStyle(
                     fontSize: 20,
                     color: Color.fromARGB(255, 110, 110, 110),
