@@ -1,29 +1,23 @@
+import 'package:citvs/app/data/models/home/company_home.dart';
+import 'package:citvs/app/data/repository/home_repository.dart';
 import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
 
 class HomeController extends GetxController {
-  final List<CompanyData> companies = [
-    CompanyData(
-      billingAmount: RxInt(100),
-      numberOfInspections: RxInt(400),
-      company: RxString('Company A'),
-    ),
-    CompanyData(
-      billingAmount: RxInt(200),
-      numberOfInspections: RxInt(300),
-      company: RxString('Company B'),
-    ),
-    // Agrega más datos según sea necesario
-  ];
-}
+  final box = GetStorage();
+  HomeRepository homeRepository = HomeRepository();
+  final RxList<Company> companies = <Company>[].obs;
 
-class CompanyData {
-  final RxInt billingAmount;
-  final RxInt numberOfInspections;
-  final RxString company;
+  @override
+  void onInit() async {
+    await updateCompanyData();
+    super.onInit();
+  }
 
-  CompanyData({
-    required this.billingAmount,
-    required this.numberOfInspections,
-    required this.company,
-  });
+  updateCompanyData() async {
+    print("--------SE ESTA LLAMANDO A LA FUNCION--------------");
+    final token = box.read("token");
+    final companiesData = await homeRepository.getDataHome(token);
+    companies.value = companiesData.data;
+  }
 }

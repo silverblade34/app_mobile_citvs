@@ -11,25 +11,43 @@ class HomePage extends GetView<HomeController> {
     final homeCL = Get.put(HomeController());
 
     return Scaffold(
-      backgroundColor: const Color.fromARGB(245,249,252,255),
+      backgroundColor: const Color.fromARGB(245, 249, 252, 255),
       body: SafeArea(
         child: SingleChildScrollView(
           child: Container(
-            padding: const EdgeInsets.all(30.0),
+            padding: const EdgeInsets.symmetric(vertical: 10.0, horizontal: 30),
             child: Column(
               children: [
-                ListView.builder(
-                  shrinkWrap: true,
-                  physics: const NeverScrollableScrollPhysics(),
-                  itemCount: homeCL.companies.length,
-                  itemBuilder: (context, index) {
-                    return CompanySummary(
-                      billingAmount: homeCL.companies[index].billingAmount,
-                      numberOfInspections:
-                          homeCL.companies[index].numberOfInspections,
-                      company: homeCL.companies[index].company,
-                    );
-                  },
+                Container(
+                  alignment: Alignment.centerLeft,
+                  child: ChoiceChip(
+                    avatar: const CircleAvatar(
+                      child: Icon(
+                        Icons.refresh,
+                        size: 18,
+                      ),
+                    ),
+                    label: const Text('Refrescar'),
+                    selected: false,
+                    onSelected: (bool value) {
+                      controller.updateCompanyData();
+                    },
+                  ),
+                ),
+                Obx(
+                  () => ListView.builder(
+                    shrinkWrap: true,
+                    physics: const NeverScrollableScrollPhysics(),
+                    itemCount: homeCL.companies.length,
+                    itemBuilder: (context, index) {
+                      return CompanySummary(
+                        billingAmount: homeCL.companies[index].totalIncome,
+                        numberOfInspections:
+                            homeCL.companies[index].totalInspections,
+                        company: homeCL.companies[index].name,
+                      );
+                    },
+                  ),
                 ),
               ],
             ),

@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class CompanySummary extends StatelessWidget {
-  final RxInt numberOfInspections;
-  final RxInt billingAmount;
-  final RxString company;
+  final int numberOfInspections;
+  final double billingAmount;
+  final String company;
 
   const CompanySummary(
       {super.key,
@@ -19,12 +19,12 @@ class CompanySummary extends StatelessWidget {
       margin: const EdgeInsets.symmetric(horizontal: 0, vertical: 10),
       decoration: BoxDecoration(
         color: Colors.white,
-        borderRadius: BorderRadius.circular(15),
+        borderRadius: BorderRadius.circular(10),
         boxShadow: [
           BoxShadow(
             color: const Color.fromARGB(255, 182, 182, 182).withOpacity(0.1),
-            spreadRadius: 3,
-            blurRadius: 4,
+            spreadRadius: 4,
+            blurRadius: 5,
             offset: const Offset(0, 1),
           ),
         ],
@@ -38,7 +38,7 @@ class CompanySummary extends StatelessWidget {
               Container(
                 decoration: BoxDecoration(
                   color: const Color.fromARGB(255, 47, 170, 158),
-                  borderRadius: BorderRadius.circular(15),
+                  borderRadius: BorderRadius.circular(10),
                 ),
                 padding:
                     const EdgeInsets.symmetric(vertical: 10, horizontal: 15),
@@ -84,7 +84,7 @@ class CompanySummary extends StatelessWidget {
                   ),
                   Container(
                     alignment: Alignment.center,
-                    width: 100,
+                    width: 150,
                     height: 50,
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(8),
@@ -99,7 +99,7 @@ class CompanySummary extends StatelessWidget {
                     child: Text(
                       '$numberOfInspections',
                       style: const TextStyle(
-                        fontSize: 18,
+                        fontSize: 16,
                         color: Color.fromARGB(255, 110, 110, 110),
                       ),
                     ),
@@ -124,7 +124,7 @@ class CompanySummary extends StatelessWidget {
                   ),
                   Container(
                     alignment: Alignment.center,
-                    width: 100,
+                    width: 150,
                     height: 50,
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(8),
@@ -137,9 +137,9 @@ class CompanySummary extends StatelessWidget {
                       ),
                     ),
                     child: Text(
-                      '$billingAmount',
+                      'S/. $billingAmount',
                       style: const TextStyle(
-                        fontSize: 18,
+                        fontSize: 16,
                         color: Color.fromARGB(255, 110, 110, 110),
                       ),
                     ),

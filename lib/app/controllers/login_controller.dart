@@ -30,6 +30,7 @@ class LoginController extends GetxController {
           await loginRepository.getDataUser(username.text, password.text);
       if (validate.status) {
         box.write("username", validate.data?.username);
+        box.write("token", validate.data?.token);
         EasyLoading.show(
             status: 'Cargando...'); // Muestra el indicador de carga
         // Espera un breve período antes de navegar a REVIEWS y cerrar el indicador
