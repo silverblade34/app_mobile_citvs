@@ -4,13 +4,15 @@ import 'package:citvs/app/ui/pages/login/login_page.dart';
 import 'package:get/get.dart';
 
 class SplashPage extends StatelessWidget {
+  const SplashPage({super.key});
+
   @override
   Widget build(BuildContext context) {
     Timer(const Duration(seconds: 2), () {
-      Get.to(LoginPage());
+      Get.to(() => LoginPage());
     });
     return Scaffold(
-      backgroundColor: Color.fromARGB(255, 255, 255, 255),
+      backgroundColor: const Color.fromARGB(255, 255, 255, 255),
       body: Center(
           child: Column(
         mainAxisAlignment: MainAxisAlignment.center,

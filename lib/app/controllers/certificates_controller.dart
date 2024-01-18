@@ -1,3 +1,4 @@
+import 'package:citvs/app/data/repository/common_repository.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
@@ -5,10 +6,9 @@ import 'package:intl/intl.dart';
 
 class CertificatesController extends GetxController {
   final box = GetStorage();
+  CommonRepository commonRepository = CommonRepository();
   RxString dateFrom = RxString("");
   RxString dateTo = RxString("");
-  RxString username = RxString("");
-  DateTime selectedDate = DateTime.now();
 
   RxString valueLapDropdown = RxString('-');
 // Declaracion de variables para las cantidad de tipos de resultados de inspección
@@ -17,70 +17,43 @@ class CertificatesController extends GetxController {
   RxInt voidedQuantity = RxInt(0);
 
   RxList<DropdownMenuItem<String>> itemsDropDown =
-      RxList<DropdownMenuItem<String>>(
-    [
-      const DropdownMenuItem(
-        value: "-",
-        child: Text(
-          "-",
-          textAlign: TextAlign.center,
-        ),
-      )
-    ],
-  );
+      RxList<DropdownMenuItem<String>>([]);
 
   @override
-  void onReady() async {
+  void onInit() async {
     final currentDate = DateTime.now();
-    final formattedDate = DateFormat('dd.MM.yyyy').format(currentDate);
+    dateFrom.value = currentDate.toString();
+    dateTo.value = currentDate.toString();
 
-    dateFrom.value = formattedDate;
-    dateTo.value = formattedDate;
+    final token = box.read("token");
+    final campusData = await commonRepository.getDataCampus(token);
 
-    // Declaramos los items del dropdown
-    List<DropdownMenuItem<String>> itemCampus = [
+    List<DropdownMenuItem<String>> dynamicItems = campusData.data.map((campus) {
+      return DropdownMenuItem(
+        value: campus.id.toString(), // Id como valor del DropdownMenuItem
+        child: Text(
+          " ${campus.name}",
+          textAlign: TextAlign.center,
+          style: const TextStyle(fontSize: 15),
+        ),
+      );
+    }).toList();
+
+    dynamicItems.insert(
+      0,
       const DropdownMenuItem(
-        alignment: Alignment.center,
         value: "0",
         child: Text(
-          "TODOS",
+          " SELECCIONAR",
           textAlign: TextAlign.center,
           style: TextStyle(fontSize: 15),
         ),
       ),
-      const DropdownMenuItem(
-        alignment: Alignment.center,
-        value: "ATE",
-        child: Text(
-          "ATE",
-          textAlign: TextAlign.center,
-          style: TextStyle(fontSize: 15),
-        ),
-      ),
-      const DropdownMenuItem(
-        alignment: Alignment.center,
-        value: "SANTA ANITA",
-        child: Text(
-          "SANTA ANITA",
-          textAlign: TextAlign.center,
-          style: TextStyle(fontSize: 15),
-        ),
-      ),
-      const DropdownMenuItem(
-        alignment: Alignment.center,
-        value: "CHORILLOS",
-        child: Text(
-          "CHORILLOS",
-          textAlign: TextAlign.center,
-          style: TextStyle(fontSize: 15),
-        ),
-      ),
-    ];
-    itemsDropDown.value = itemCampus;
-    valueLapDropdown.value = "0";
+    );
 
-    await doSearch();
-    super.onReady();
+    itemsDropDown.value = dynamicItems;
+    valueLapDropdown.value = "0";
+    super.onInit();
   }
 
   doSearch() async {

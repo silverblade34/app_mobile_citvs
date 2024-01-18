@@ -1,16 +1,17 @@
 import 'package:flutter/material.dart';
+// ignore: depend_on_referenced_packages
 import 'package:intl/intl.dart';
-
 class DatePicker extends StatefulWidget {
-  // Declaración del constructor
   const DatePicker({
     Key? key,
     required this.label,
     required this.onChanged,
+    required this.initialDate, // Cambio para recibir la fecha como String
   }) : super(key: key);
 
-  final String label; // Asegúrate de que label sea de tipo String
-  final ValueChanged<String>? onChanged; // Cambio a ValueChanged<String>
+  final String label;
+  final ValueChanged<String>? onChanged;
+  final String initialDate; // Cambio: recibir la fecha como String
 
   @override
   State<DatePicker> createState() => DatePickerState();
@@ -22,8 +23,7 @@ class DatePickerState extends State<DatePicker> {
   @override
   void initState() {
     super.initState();
-    _date = TextEditingController(
-        text: DateFormat('yyyy-MM-dd').format(DateTime.now()));
+    _date = TextEditingController(text: widget.initialDate);
   }
 
   @override
@@ -36,22 +36,24 @@ class DatePickerState extends State<DatePicker> {
             Icons.calendar_today_rounded,
             color: Color.fromARGB(255, 85, 123, 161),
           ),
-          labelText: widget
-              .label, // Utiliza widget.label para obtener el valor dinámico
+          labelText: widget.label,
         ),
         onTap: () async {
+          DateTime? initialDate = DateTime.tryParse(widget.initialDate);
+
           DateTime? pickedDate = await showDatePicker(
-              context: context,
-              initialDate: DateTime.now(),
-              firstDate: DateTime(2000),
-              lastDate: DateTime(2101),
-              locale: const Locale('es', 'ES'));
+            context: context,
+            initialDate: initialDate ?? DateTime.now(),
+            firstDate: DateTime(2000),
+            lastDate: DateTime(2101),
+            locale: const Locale('es', 'ES'),
+          );
 
           if (pickedDate != null) {
             setState(() {
               _date.text = DateFormat('yyyy-MM-dd').format(pickedDate);
               if (widget.onChanged != null) {
-                widget.onChanged!(_date.text); // Notificar al padre el cambio
+                widget.onChanged!(_date.text);
               }
             });
           }

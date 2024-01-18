@@ -29,6 +29,8 @@ class TicketsController extends GetxController {
       final currentDate = DateTime.now();
       dateFrom.value = currentDate.toString().split(" ")[0];
       dateTo.value = currentDate.toString().split(" ")[0];
+      print(dateFrom.value);
+      print(dateTo.value);
     }
 
     final token = box.read("token");

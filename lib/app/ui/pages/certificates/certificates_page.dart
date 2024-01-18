@@ -60,6 +60,7 @@ class CertificatesPage extends GetView<CertificatesController> {
                       certificatesCL.dateFrom.value =
                           newDate; // Actualizar fecha desde
                     },
+                    initialDate: controller.dateFrom.value,
                   ),
                   DatePicker(
                     label: "Fecha hasta",
@@ -67,6 +68,7 @@ class CertificatesPage extends GetView<CertificatesController> {
                       certificatesCL.dateTo.value =
                           newDate; // Actualizar fecha desde
                     },
+                    initialDate: controller.dateTo.value,
                   ),
                   const SizedBox(
                     height: 15,

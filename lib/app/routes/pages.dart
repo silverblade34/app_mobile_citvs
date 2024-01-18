@@ -12,6 +12,7 @@ import 'package:citvs/app/ui/pages/screens/main_screen.dart';
 import 'package:citvs/app/ui/pages/splash_page.dart';
 import 'package:citvs/app/ui/pages/tickets/tickets_page.dart';
 import 'package:citvs/app/ui/pages/vehicles/vehicles_page.dart';
+import 'package:get_storage/get_storage.dart';
 import 'package:get/get.dart';
 part './routes.dart';
 
@@ -19,16 +20,25 @@ abstract class AppPages {
   static final pages = [
     GetPage(
       name: Routes.SPLASH,
-      page: () => SplashPage(),
+      page: () => const SplashPage(),
     ),
     GetPage(
       name: Routes.LOGIN,
-      page: () => LoginPage(),
+      page: () {
+        final token = GetStorage().read("token");
+        if (token != null && token.isNotEmpty) {
+          // Si hay un token, redirigir a MAIN
+          return const MainScreen();
+        } else {
+          // Si no hay token, mostrar la pantalla de inicio de sesión
+          return LoginPage();
+        }
+      },
       binding: LoginBinding(),
     ),
-     GetPage(
+    GetPage(
       name: Routes.MAIN,
-      page: () => MainScreen(),
+      page: () => const MainScreen(),
     ),
     GetPage(
       name: Routes.HOME,

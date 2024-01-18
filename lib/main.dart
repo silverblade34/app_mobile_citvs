@@ -10,11 +10,13 @@ void main() async {
   await GetStorage.init();
   runApp(
     GetMaterialApp(
-       localizationsDelegates: const [
-         GlobalMaterialLocalizations.delegate
-       ],
+      localizationsDelegates: const [
+        GlobalMaterialLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate,
+        GlobalCupertinoLocalizations.delegate,
+      ],
       debugShowCheckedModeBanner: false,
-      initialRoute: Routes.INITIAL,
+      initialRoute: Routes.MAIN,
       theme: ThemeData(
         fontFamily: 'Roboto',
         useMaterial3: true,

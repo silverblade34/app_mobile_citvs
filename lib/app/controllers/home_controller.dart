@@ -7,7 +7,7 @@ class HomeController extends GetxController {
   final box = GetStorage();
   HomeRepository homeRepository = HomeRepository();
   final RxList<Company> companies = <Company>[].obs;
-
+ 
   @override
   void onInit() async {
     await updateCompanyData();

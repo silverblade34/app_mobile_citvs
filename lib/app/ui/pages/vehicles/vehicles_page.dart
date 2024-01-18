@@ -60,12 +60,14 @@ class VehiclesPage extends GetView<VehiclesController> {
                     vehiclesCL.dateFrom.value =
                         newDate; // Actualizar fecha desde
                   },
+                  initialDate: controller.dateFrom.value,
                 ),
                 DatePicker(
                   label: "Fecha hasta",
                   onChanged: (newDate) {
                     vehiclesCL.dateTo.value = newDate; // Actualizar fecha desde
                   },
+                  initialDate: controller.dateTo.value,
                 ),
                 const SizedBox(
                   height: 15,
