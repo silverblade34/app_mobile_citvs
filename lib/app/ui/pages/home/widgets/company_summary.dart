@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 
 class CompanySummary extends StatelessWidget {
   final int numberOfInspections;
@@ -14,6 +13,7 @@ class CompanySummary extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    double screenWidth = MediaQuery.of(context).size.width;
     return Container(
       padding: const EdgeInsets.all(20),
       margin: const EdgeInsets.symmetric(horizontal: 0, vertical: 10),
@@ -43,7 +43,7 @@ class CompanySummary extends StatelessWidget {
                 padding:
                     const EdgeInsets.symmetric(vertical: 10, horizontal: 15),
                 child: Text(
-                  '$company',
+                  company,
                   textAlign: TextAlign.start,
                   style: const TextStyle(
                     color: Colors.white,
@@ -84,15 +84,13 @@ class CompanySummary extends StatelessWidget {
                   ),
                   Container(
                     alignment: Alignment.center,
-                    width: 150,
+                    width: (screenWidth - 100) / 2,
                     height: 50,
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(8),
-                      color: const Color.fromARGB(
-                          255, 255, 255, 255), 
+                      color: const Color.fromARGB(255, 255, 255, 255),
                       border: Border.all(
-                        color: const Color.fromARGB(
-                            255, 106, 157, 207), 
+                        color: const Color.fromARGB(255, 106, 157, 207),
                         width: 1, // Ancho del borde
                       ),
                     ),
@@ -124,8 +122,8 @@ class CompanySummary extends StatelessWidget {
                   ),
                   Container(
                     alignment: Alignment.center,
-                    width: 150,
                     height: 50,
+                    width: (screenWidth - 100) / 2,
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(8),
                       color: const Color.fromARGB(

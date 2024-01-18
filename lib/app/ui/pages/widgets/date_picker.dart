@@ -41,11 +41,11 @@ class DatePickerState extends State<DatePicker> {
         ),
         onTap: () async {
           DateTime? pickedDate = await showDatePicker(
-            context: context,
-            initialDate: DateTime.now(),
-            firstDate: DateTime(2000),
-            lastDate: DateTime(2101),
-          );
+              context: context,
+              initialDate: DateTime.now(),
+              firstDate: DateTime(2000),
+              lastDate: DateTime(2101),
+              locale: const Locale('es', 'ES'));
 
           if (pickedDate != null) {
             setState(() {

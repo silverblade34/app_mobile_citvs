@@ -98,7 +98,19 @@ class TableDynamic extends StatelessWidget {
         for (final rowData in data)
           TableRow(
             children: [
-              buildTableCell(rowData['monthName']),
+              TableCell(
+                verticalAlignment: TableCellVerticalAlignment.middle,
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Text(
+                    rowData['monthName'],
+                    textAlign: TextAlign.start,
+                    style: const TextStyle(
+                      color: Color.fromARGB(255, 110, 110, 110),
+                    ),
+                  ),
+                ),
+              ),
               buildTableCell('${rowData['firstYear'] ?? ''}'),
               buildTableCell('${rowData['intermediateYear'] ?? ''}'),
               buildTableCell('${rowData['lastYear'] ?? ''}'),
@@ -115,11 +127,11 @@ class TableDynamic extends StatelessWidget {
         padding: const EdgeInsets.all(8.0),
         child: Text(
           text,
+          textAlign: TextAlign.center,
           style: const TextStyle(
-            color: Colors.white,
-            fontFamily: 'Poppins',
-            fontWeight: FontWeight.w700
-          ),
+              color: Colors.white,
+              fontFamily: 'Poppins',
+              fontWeight: FontWeight.w700),
         ),
       ),
     );
@@ -131,7 +143,8 @@ class TableDynamic extends StatelessWidget {
       child: Padding(
         padding: const EdgeInsets.all(8.0),
         child: Text(
-          text,
+          'S/. $text',
+          textAlign: TextAlign.end,
           style: const TextStyle(
             color: Color.fromARGB(255, 110, 110, 110),
           ),
