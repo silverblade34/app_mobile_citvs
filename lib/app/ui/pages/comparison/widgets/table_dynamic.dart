@@ -1,82 +1,13 @@
+import 'package:citvs/app/data/models/comparison/comparison.dart';
+import 'package:citvs/app/data/models/comparison/header.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class TableDynamic extends StatelessWidget {
-  final List<Map<String, dynamic>> data = [
-    {
-      'monthName': 'Enero',
-      'firstYear': 25630,
-      'intermediateYear': 25630,
-      'lastYear': 35630,
-    },
-    {
-      'monthName': 'Febrero',
-      'firstYear': 25631,
-      'intermediateYear': 25631,
-      'lastYear': 35631,
-    },
-    {
-      'monthName': 'Marzo',
-      'firstYear': 25630,
-      'intermediateYear': 25630,
-      'lastYear': 35630,
-    },
-    {
-      'monthName': 'Abril',
-      'firstYear': 25631,
-      'intermediateYear': 25631,
-      'lastYear': 35631,
-    },
-    {
-      'monthName': 'Mayo',
-      'firstYear': 25630,
-      'intermediateYear': 25630,
-      'lastYear': 35630,
-    },
-    {
-      'monthName': 'Junio',
-      'firstYear': 25631,
-      'intermediateYear': 25631,
-      'lastYear': 35631,
-    },
-    {
-      'monthName': 'Julio',
-      'firstYear': 25630,
-      'intermediateYear': 25630,
-      'lastYear': 35630,
-    },
-    {
-      'monthName': 'Agosto',
-      'firstYear': 25631,
-      'intermediateYear': 25631,
-      'lastYear': 35631,
-    },
-    {
-      'monthName': 'Setiembre',
-      'firstYear': 25630,
-      'intermediateYear': 25630,
-      'lastYear': 35630,
-    },
-    {
-      'monthName': 'Octubre',
-      'firstYear': 25631,
-      'intermediateYear': 25631,
-      'lastYear': 35631,
-    },
-    {
-      'monthName': 'Noviembre',
-      'firstYear': 25630,
-      'intermediateYear': 25630,
-      'lastYear': 35630,
-    },
-    {
-      'monthName': 'Diciembre',
-      'firstYear': 25631,
-      'intermediateYear': 25631,
-      'lastYear': 35631,
-    },
-  ];
-
-  TableDynamic({super.key});
+  final List<Comparison> data;
+  final Rx<Header>  dataHeader;
+  const TableDynamic({required this.data, required this.dataHeader, Key? key})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -89,10 +20,10 @@ class TableDynamic extends StatelessWidget {
             color: Color.fromARGB(255, 112, 156, 201),
           ),
           children: [
-            buildTableCellHeader('Mes'),
-            buildTableCellHeader('2022'),
-            buildTableCellHeader('2023'),
-            buildTableCellHeader('2024'),
+            buildTableCellHeader(dataHeader.value.monthName),
+            buildTableCellHeader(dataHeader.value.firstYear),
+            buildTableCellHeader(dataHeader.value.intermediateYear),
+            buildTableCellHeader(dataHeader.value.lastYear),
           ],
         ),
         for (final rowData in data)
@@ -103,7 +34,7 @@ class TableDynamic extends StatelessWidget {
                 child: Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: Text(
-                    rowData['monthName'],
+                    rowData.monthName,
                     textAlign: TextAlign.start,
                     style: const TextStyle(
                       color: Color.fromARGB(255, 110, 110, 110),
@@ -111,9 +42,9 @@ class TableDynamic extends StatelessWidget {
                   ),
                 ),
               ),
-              buildTableCell('${rowData['firstYear'] ?? ''}'),
-              buildTableCell('${rowData['intermediateYear'] ?? ''}'),
-              buildTableCell('${rowData['lastYear'] ?? ''}'),
+              buildTableCell('${rowData.firstYear}'),
+              buildTableCell('${rowData.intermediateYear}'),
+              buildTableCell('${rowData.lastYear}'),
             ],
           ),
       ],

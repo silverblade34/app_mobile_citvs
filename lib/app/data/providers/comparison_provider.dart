@@ -5,12 +5,14 @@ import 'package:get_storage/get_storage.dart';
 const baseUrl = 'http://204.48.17.106:3010';
 const apiUrl = 'api/v1';
 
-class HomeProvider extends GetConnect {
-  Future<Response> getDataHome(String token) async {
+class ComparisonProvider extends GetConnect {
+  Future<Response> getDataComparison(
+      String token, String campusId, String typeOfComparison) async {
     try {
       // Enviar la solicitud POST con el payload
-      final raw = await get(
-        "$baseUrl/$apiUrl/reports/homeToDay",
+      final raw = await post(
+        "$baseUrl/$apiUrl/reports/comparison",
+        {"campusId": campusId, "typeOfComparison": typeOfComparison},
         headers: {
           'Authorization': 'Bearer $token',
         },

@@ -30,7 +30,7 @@ class TicketsPage extends GetView<TicketsController> {
                     Expanded(
                       child: Obx(
                         () => Container(
-                          padding: const EdgeInsets.only(left: 8.0),
+                          padding: const EdgeInsets.only(left: 15.0),
                           decoration: BoxDecoration(
                             color: const Color.fromARGB(255, 236, 236, 236),
                             borderRadius: BorderRadius.circular(8),

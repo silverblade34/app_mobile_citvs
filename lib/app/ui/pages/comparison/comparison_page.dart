@@ -30,6 +30,7 @@ class ComparisonPage extends GetView<ComparisonController> {
                     Expanded(
                       child: Obx(
                         () => Container(
+                          padding: const EdgeInsets.only(left: 15.0),
                           decoration: BoxDecoration(
                             color: const Color.fromARGB(255, 236, 236,
                                 236), // Color de fondo del contenedor
@@ -40,14 +41,12 @@ class ComparisonPage extends GetView<ComparisonController> {
                           height: 45,
                           child: DropdownButton<String>(
                             isExpanded: true,
-                            value: controller.valueLapDropdown.value,
+                            value: controller.valueCampusDropdown.value,
                             underline: Container(color: Colors.transparent),
-                            items: controller.itemsDropDown,
+                            items: controller.itemsCampus,
                             onChanged: (String? newValue) async {
                               if (newValue != null) {
-                                print("--------------2");
-                                print(newValue);
-                                controller.valueLapDropdown.value = newValue;
+                                controller.valueCampusDropdown.value = newValue;
                               }
                             },
                           ),
@@ -69,6 +68,7 @@ class ComparisonPage extends GetView<ComparisonController> {
                     Expanded(
                       child: Obx(
                         () => Container(
+                          padding: const EdgeInsets.only(left: 15.0),
                           decoration: BoxDecoration(
                             color: const Color.fromARGB(255, 236, 236,
                                 236), // Color de fondo del contenedor
@@ -79,14 +79,12 @@ class ComparisonPage extends GetView<ComparisonController> {
                           height: 45,
                           child: DropdownButton<String>(
                             isExpanded: true,
-                            value: controller.valueLapDropdown.value,
+                            value: controller.valueTypeComparison.value,
                             underline: Container(color: Colors.transparent),
-                            items: controller.itemsDropDown,
+                            items: controller.itemsTypeComparison,
                             onChanged: (String? newValue) async {
                               if (newValue != null) {
-                                print("--------------2");
-                                print(newValue);
-                                controller.valueLapDropdown.value = newValue;
+                                controller.valueTypeComparison.value = newValue;
                               }
                             },
                           ),
@@ -104,7 +102,7 @@ class ComparisonPage extends GetView<ComparisonController> {
                 const SizedBox(
                   height: 15,
                 ),
-                TableDynamic()
+                TableDynamic(data: controller.dataComparison, dataHeader: controller.dataHeaders)
               ],
             ),
           ),

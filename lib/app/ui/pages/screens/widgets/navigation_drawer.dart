@@ -25,8 +25,7 @@ class NavigationDrawerLayout extends StatelessWidget {
     );
   }
 
-  Widget buildHeader(
-          BuildContext context, MainScreenController controller) =>
+  Widget buildHeader(BuildContext context, MainScreenController controller) =>
       Material(
         color: const Color.fromARGB(255, 20, 180, 164),
         child: InkWell(
@@ -90,7 +89,7 @@ class NavigationDrawerLayout extends StatelessWidget {
               title: Text(destination.label),
               onTap: () {
                 controller.selectedIndex.value = index;
-                 Navigator.pop(context);
+                Navigator.pop(context);
               },
             );
           }).toList(),
@@ -106,16 +105,11 @@ class NavigationDrawerLayout extends StatelessWidget {
             leading: const Icon(Icons.logout),
             title: const Text('Cerrar sesión'),
             onTap: () async {
-              EasyLoading.show(
-                  status:
-                      'Cerrando sesión...'); // Muestra el indicador de carga
-              GetStorage()
-                  .erase(); // Esto borra todos los datos guardados en el almacenamiento local
-
-              // Navegar a la ruta de inicio de sesión (login)
+              EasyLoading.show(status: 'Cerrando sesión...');
+              GetStorage().erase();
               await Future.delayed(
                 const Duration(seconds: 1),
-              ); 
+              );
               Get.offAllNamed('/login');
 
               EasyLoading.dismiss();

@@ -2,7 +2,6 @@ import 'package:citvs/app/data/repository/common_repository.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
-import 'package:intl/intl.dart';
 
 class CertificatesController extends GetxController {
   final box = GetStorage();
@@ -30,7 +29,7 @@ class CertificatesController extends GetxController {
 
     List<DropdownMenuItem<String>> dynamicItems = campusData.data.map((campus) {
       return DropdownMenuItem(
-        value: campus.id.toString(), // Id como valor del DropdownMenuItem
+        value: campus.id.toString(),
         child: Text(
           " ${campus.name}",
           textAlign: TextAlign.center,

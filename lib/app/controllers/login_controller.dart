@@ -37,7 +37,7 @@ class LoginController extends GetxController {
         await Future.delayed(
           const Duration(seconds: 1),
         ); // Puedes ajustar el tiempo según sea necesario
-        Get.toNamed(Routes.MAIN);
+        Get.toNamed('/main');
         EasyLoading.dismiss();
       } else {
         EasyLoading.showInfo(validate.message);
