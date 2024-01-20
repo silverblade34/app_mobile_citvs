@@ -1,11 +1,14 @@
+import 'package:citvs/app/data/repository/certificates_repository.dart';
 import 'package:citvs/app/data/repository/common_repository.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
+import 'package:flutter_easyloading/flutter_easyloading.dart';
 
 class CertificatesController extends GetxController {
   final box = GetStorage();
   CommonRepository commonRepository = CommonRepository();
+  CertificatesRepository certificatesRepository = CertificatesRepository();
   RxString dateFrom = RxString("");
   RxString dateTo = RxString("");
 
@@ -56,9 +59,19 @@ class CertificatesController extends GetxController {
   }
 
   doSearch() async {
-    print("--------DENTRO DEL CONTROLLER---------");
-    print("SEDE: " + valueLapDropdown.value);
-    print("FECHA DESDE: " + dateTo.value);
-    print("FECHA HASTA: " + dateFrom.value);
+    final token = box.read("token");
+    int? selectedValue = int.tryParse(valueLapDropdown.value);
+
+    if (selectedValue == null || selectedValue == 0) {
+      EasyLoading.showInfo("Selecciona una sede");
+      return;
+    }
+    EasyLoading.show(status: 'Cargando...');
+    final dataCertificates = await certificatesRepository.getDataCertificates(
+        token, selectedValue, dateFrom.toString(), dateTo.toString());
+    approvedQuantity.value = dataCertificates.data.approvedInspections;
+    disapprovedQuantity.value = dataCertificates.data.failedInspections;
+    voidedQuantity.value = dataCertificates.data.canceledInspections;
+    EasyLoading.dismiss();
   }
 }

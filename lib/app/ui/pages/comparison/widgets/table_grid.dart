@@ -49,6 +49,7 @@ class TableGrid extends StatelessWidget {
 
   List<GridColumn> buildDynamicGridColumns(columnNames) => <GridColumn>[
         GridColumn(
+          width: 70,
           columnName: 'monthName',
           label: Container(
             alignment: Alignment.center,
@@ -59,6 +60,7 @@ class TableGrid extends StatelessWidget {
           ),
         ),
         GridColumn(
+          columnWidthMode: ColumnWidthMode.auto,
           columnName: 'firstYear',
           label: Container(
             alignment: Alignment.center,
@@ -69,6 +71,8 @@ class TableGrid extends StatelessWidget {
           ),
         ),
         GridColumn(
+          width: 100,
+          columnWidthMode: ColumnWidthMode.auto,
           columnName: 'intermediateYear',
           label: Container(
             alignment: Alignment.center,
@@ -79,6 +83,7 @@ class TableGrid extends StatelessWidget {
           ),
         ),
         GridColumn(
+          columnWidthMode: ColumnWidthMode.auto,
           columnName: 'lastYear',
           label: Container(
             alignment: Alignment.center,

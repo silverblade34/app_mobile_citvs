@@ -29,28 +29,29 @@ class CertificatesPage extends GetView<CertificatesController> {
                         iconData: Icons.domain,
                       ),
                       Expanded(
-                        child: Container(
-                          decoration: BoxDecoration(
-                            color: const Color.fromARGB(255, 236, 236,
-                                236), // Color de fondo del contenedor
-                            borderRadius:
-                                BorderRadius.circular(8), // Bordes redondeados
-                          ),
-                          // color: Colors.blueAccent,
-                          height: 45,
-                          child: DropdownButton<String>(
-                            isExpanded: true,
-                            value: certificatesCL.valueLapDropdown.value,
-                            underline: Container(color: Colors.transparent),
-                            items: certificatesCL.itemsDropDown,
-                            onChanged: (String? newValue) async {
-                              if (newValue != null) {
-                                certificatesCL.valueLapDropdown.value =
-                                    newValue;
-                              }
-                            },
-                          ),
-                        ),
+                        child: Obx(() => Container(
+                              padding: const EdgeInsets.only(left: 15.0),
+                              decoration: BoxDecoration(
+                                color: const Color.fromARGB(255, 236, 236,
+                                    236), // Color de fondo del contenedor
+                                borderRadius: BorderRadius.circular(
+                                    8), // Bordes redondeados
+                              ),
+                              // color: Colors.blueAccent,
+                              height: 45,
+                              child: DropdownButton<String>(
+                                isExpanded: true,
+                                value: certificatesCL.valueLapDropdown.value,
+                                underline: Container(color: Colors.transparent),
+                                items: certificatesCL.itemsDropDown,
+                                onChanged: (String? newValue) async {
+                                  if (newValue != null) {
+                                    certificatesCL.valueLapDropdown.value =
+                                        newValue;
+                                  }
+                                },
+                              ),
+                            )),
                       ),
                     ],
                   ),

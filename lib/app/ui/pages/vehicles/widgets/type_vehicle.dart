@@ -48,13 +48,13 @@ class TypeVehicle extends StatelessWidget {
                 width: 1,
               ),
             ),
-            child: Text(
-              '${quantity.value}',
-              style: const TextStyle(
-                fontSize: 18,
-                color: Color.fromARGB(255, 110, 110, 110),
-              ),
-            ),
+            child: Obx(() => Text(
+                  '${quantity.value}',
+                  style: const TextStyle(
+                    fontSize: 18,
+                    color: Color.fromARGB(255, 110, 110, 110),
+                  ),
+                )),
           ),
         ],
       ),

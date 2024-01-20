@@ -1,88 +1,79 @@
+import 'package:citvs/app/data/repository/common_repository.dart';
+import 'package:citvs/app/data/repository/vehicles_repository.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
+import 'package:flutter_easyloading/flutter_easyloading.dart';
 
 class VehiclesController extends GetxController {
   // Llamando al localstorage
   final box = GetStorage();
-
+  CommonRepository commonRepository = CommonRepository();
+  VehiclesRepository vehiclesRepository = VehiclesRepository();
   RxString dateFrom = RxString("");
   RxString dateTo = RxString("");
 
   // Cantidad de vehiculos revisados
-  RxInt heavyVehicleQuantity = RxInt(1580);
-  RxInt lightVehicleQuantity = RxInt(11080);
-  RxInt minorVehicleQuantity = RxInt(1520);
+  RxInt heavyVehicleQuantity = RxInt(0);
+  RxInt lightVehicleQuantity = RxInt(0);
+  RxInt minorVehicleQuantity = RxInt(0);
   // Valor del item seleccionado por default en el dropdwon
   RxString valueLapDropdown = RxString('-');
 
-  // Declaración estructura items dropdown
   RxList<DropdownMenuItem<String>> itemsDropDown =
-      RxList<DropdownMenuItem<String>>(
-    [
-      const DropdownMenuItem(
-        value: "-",
-        child: Text(
-          "-",
-          textAlign: TextAlign.center,
-        ),
-      )
-    ],
-  );
+      RxList<DropdownMenuItem<String>>([]);
 
   @override
-  void onReady() async {
+  void onInit() async {
     final currentDate = DateTime.now();
     dateFrom.value = currentDate.toString().split(" ")[0];
     dateTo.value = currentDate.toString().split(" ")[0];
-    // Insertando elementos para el dropdown por default
-    List<DropdownMenuItem<String>> itemCampus = [
+
+    final token = box.read("token");
+    final campusData = await commonRepository.getDataCampus(token);
+
+    List<DropdownMenuItem<String>> dynamicItems = campusData.data.map((campus) {
+      return DropdownMenuItem(
+        value: campus.id.toString(),
+        child: Text(
+          " ${campus.name}",
+          textAlign: TextAlign.center,
+          style: const TextStyle(fontSize: 15),
+        ),
+      );
+    }).toList();
+
+    dynamicItems.insert(
+      0,
       const DropdownMenuItem(
-        alignment: Alignment.center,
         value: "0",
         child: Text(
-          "SELECCIONAR",
+          " SELECCIONAR",
           textAlign: TextAlign.center,
           style: TextStyle(fontSize: 15),
         ),
       ),
-      const DropdownMenuItem(
-        alignment: Alignment.center,
-        value: "ATE",
-        child: Text(
-          "ATE",
-          textAlign: TextAlign.center,
-          style: TextStyle(fontSize: 15),
-        ),
-      ),
-      const DropdownMenuItem(
-        alignment: Alignment.center,
-        value: "SANTA ANITA",
-        child: Text(
-          "SANTA ANITA",
-          textAlign: TextAlign.center,
-          style: TextStyle(fontSize: 15),
-        ),
-      ),
-      const DropdownMenuItem(
-        alignment: Alignment.center,
-        value: "CHORILLOS",
-        child: Text(
-          "CHORILLOS",
-          textAlign: TextAlign.center,
-          style: TextStyle(fontSize: 15),
-        ),
-      ),
-    ];
-    itemsDropDown.value = itemCampus;
+    );
+
+    itemsDropDown.value = dynamicItems;
     valueLapDropdown.value = "0";
-    super.onReady();
+    super.onInit();
   }
 
   doSearch() async {
-    print("--------DENTRO DEL CONTROLLER---------");
-    print("SEDE: " + valueLapDropdown.value);
-    print("FECHA DESDE: " + dateTo.value);
-    print("FECHA HASTA: " + dateFrom.value);
+    final token = box.read("token");
+    int? selectedValue = int.tryParse(valueLapDropdown.value);
+
+    if (selectedValue == null || selectedValue == 0) {
+      EasyLoading.showInfo("Selecciona una sede");
+      return;
+    }
+    EasyLoading.show(status: 'Cargando...');
+    final dataVehicles = await vehiclesRepository.getDataVehicles(
+        token, selectedValue, dateFrom.toString(), dateTo.toString());
+    heavyVehicleQuantity.value = dataVehicles.data.heavyVehicles;
+    lightVehicleQuantity.value = dataVehicles.data.lightVehicles;
+    minorVehicleQuantity.value = dataVehicles.data.minorVehicles;
+    EasyLoading.dismiss();
   }
 }

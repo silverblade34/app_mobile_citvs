@@ -16,7 +16,7 @@ void main() async {
         GlobalCupertinoLocalizations.delegate,
       ],
       debugShowCheckedModeBanner: false,
-      initialRoute: Routes.MAIN,
+      initialRoute: Routes.SPLASH,
       theme: ThemeData(
         fontFamily: 'Roboto',
         useMaterial3: true,

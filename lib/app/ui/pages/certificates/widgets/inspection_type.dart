@@ -49,13 +49,13 @@ class InspectionType extends StatelessWidget {
                 width: 1, // Ancho del borde
               ),
             ),
-            child: Text(
-              '${quantity.value}',
-              style: const TextStyle(
-                fontSize: 16,
-                color: Color.fromARGB(255, 121, 121, 121),
-              ),
-            ),
+            child: Obx(() => Text(
+                  '${quantity.value}',
+                  style: const TextStyle(
+                    fontSize: 16,
+                    color: Color.fromARGB(255, 121, 121, 121),
+                  ),
+                )),
           ),
         ],
       ),
