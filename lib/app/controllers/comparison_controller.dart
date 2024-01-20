@@ -12,6 +12,7 @@ class ComparisonController extends GetxController {
   CommonRepository commonRepository = CommonRepository();
   ComparisonRepository comparisonRepository = ComparisonRepository();
   RxString valueCampusDropdown = RxString('0');
+  RxString beforeValue = RxString('');
   RxString valueTypeComparison = RxString('0');
   RxList<Comparison> dataComparison = <Comparison>[].obs;
   Rx<Header> dataHeaders = Header(
@@ -84,6 +85,18 @@ class ComparisonController extends GetxController {
     itemsCampus.value = dynamicItems;
     valueCampusDropdown.value = "0";
     valueTypeComparison.value = "0";
+    beforeValue.value = "";
+    EasyLoading.show(status: 'Cargando...');
+    final response = await comparisonRepository.getDataComparison(
+        token, valueCampusDropdown.value, valueTypeComparison.value);
+    dataComparison.value = response.data.comparison;
+    dataHeaders.value = response.data.header;
+    if (valueTypeComparison.value == "INSPECCION") {
+      beforeValue.value = "";
+    } else if (valueTypeComparison.value == "FACTURACION") {
+      beforeValue.value = "S/. ";
+    }
+    EasyLoading.dismiss();
     super.onReady();
   }
 
@@ -98,6 +111,11 @@ class ComparisonController extends GetxController {
         token, valueCampusDropdown.value, valueTypeComparison.value);
     dataComparison.value = response.data.comparison;
     dataHeaders.value = response.data.header;
+    if (valueTypeComparison.value == "INSPECCION") {
+      beforeValue.value = "";
+    } else if (valueTypeComparison.value == "FACTURACION") {
+      beforeValue.value = "S/. ";
+    }
     EasyLoading.dismiss();
   }
 }

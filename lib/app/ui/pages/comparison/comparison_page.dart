@@ -1,7 +1,7 @@
+import 'package:citvs/app/ui/pages/comparison/widgets/table_grid.dart';
 import 'package:flutter/material.dart';
 import 'package:citvs/app/ui/pages/widgets/button_filter.dart';
 import 'package:citvs/app/controllers/comparison_controller.dart';
-import 'package:citvs/app/ui/pages/comparison/widgets/table_dynamic.dart';
 import 'package:citvs/app/ui/pages/widgets/text_select.dart';
 import 'package:get/get.dart';
 
@@ -70,12 +70,10 @@ class ComparisonPage extends GetView<ComparisonController> {
                         () => Container(
                           padding: const EdgeInsets.only(left: 15.0),
                           decoration: BoxDecoration(
-                            color: const Color.fromARGB(255, 236, 236,
-                                236), // Color de fondo del contenedor
+                            color: const Color.fromARGB(255, 236, 236, 236),
                             borderRadius:
                                 BorderRadius.circular(8), // Bordes redondeados
                           ),
-                          // color: Colors.blueAccent,
                           height: 45,
                           child: DropdownButton<String>(
                             isExpanded: true,
@@ -102,7 +100,11 @@ class ComparisonPage extends GetView<ComparisonController> {
                 const SizedBox(
                   height: 15,
                 ),
-                TableDynamic(data: controller.dataComparison, dataHeader: controller.dataHeaders),
+                TableGrid(
+                  dataSource: controller.dataComparison,
+                  dataHeaders: controller.dataHeaders,
+                  beforeValue: controller.beforeValue,
+                )
               ],
             ),
           ),

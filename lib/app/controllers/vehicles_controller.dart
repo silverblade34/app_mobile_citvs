@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
-// ignore: depend_on_referenced_packages
-import 'package:intl/intl.dart';
 
 class VehiclesController extends GetxController {
   // Llamando al localstorage
@@ -35,10 +33,8 @@ class VehiclesController extends GetxController {
   @override
   void onReady() async {
     final currentDate = DateTime.now();
-    final formattedDate = DateFormat('dd.MM.yyyy').format(currentDate);
-
-    dateFrom.value = formattedDate;
-    dateTo.value = formattedDate;
+    dateFrom.value = currentDate.toString().split(" ")[0];
+    dateTo.value = currentDate.toString().split(" ")[0];
     // Insertando elementos para el dropdown por default
     List<DropdownMenuItem<String>> itemCampus = [
       const DropdownMenuItem(

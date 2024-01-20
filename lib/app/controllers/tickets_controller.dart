@@ -25,14 +25,9 @@ class TicketsController extends GetxController {
 
   @override
   void onInit() async {
-    if (dateFrom.value.isEmpty && dateTo.value.isEmpty) {
-      final currentDate = DateTime.now();
-      dateFrom.value = currentDate.toString().split(" ")[0];
-      dateTo.value = currentDate.toString().split(" ")[0];
-      print(dateFrom.value);
-      print(dateTo.value);
-    }
-
+    final currentDate = DateTime.now();
+    dateFrom.value = currentDate.toString().split(" ")[0];
+    dateTo.value = currentDate.toString().split(" ")[0];
     final token = box.read("token");
     final campusData = await commonRepository.getDataCampus(token);
 

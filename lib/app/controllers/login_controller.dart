@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:citvs/app/data/repository/login_repository.dart';
-import 'package:citvs/app/routes/pages.dart';
 import 'package:get/get.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:get_storage/get_storage.dart';

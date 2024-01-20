@@ -41,17 +41,14 @@ class NavigationDrawerLayout extends StatelessWidget {
                   padding: const EdgeInsets.all(10),
                   width: 120,
                   decoration: const BoxDecoration(
-                    shape: BoxShape
-                        .circle, // Utiliza shape: BoxShape.circle para el contenedor
+                    shape: BoxShape.circle,
                     color: Color.fromARGB(255, 255, 255, 255),
                   ),
                   child: ClipOval(
                     child: Image.asset(
                       'assets/images/perfil.png',
-                      width:
-                          100, // Puedes ajustar el ancho de la imagen según sea necesario
-                      height:
-                          100, // Puedes ajustar la altura de la imagen según sea necesario
+                      width: 100,
+                      height: 100,
                       fit: BoxFit.cover,
                     ),
                   ),

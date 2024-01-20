@@ -55,17 +55,16 @@ class TicketsPage extends GetView<TicketsController> {
                 DatePicker(
                   label: "Fecha desde",
                   onChanged: (newDate) {
-                    controller.dateFrom.value =
-                        newDate; // Actualizar fecha desde
+                    controller.dateFrom.value = newDate;
                   },
                   initialDate: controller.dateFrom.value,
                 ),
                 DatePicker(
                   label: "Fecha hasta",
                   onChanged: (newDate) {
-                    controller.dateTo.value = newDate; // Actualizar fecha desde
+                    controller.dateTo.value = newDate;
                   },
-                    initialDate: controller.dateTo.value,
+                  initialDate: controller.dateTo.value,
                 ),
                 const SizedBox(
                   height: 15,

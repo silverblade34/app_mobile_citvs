@@ -57,16 +57,14 @@ class CertificatesPage extends GetView<CertificatesController> {
                   DatePicker(
                     label: "Fecha desde",
                     onChanged: (newDate) {
-                      certificatesCL.dateFrom.value =
-                          newDate; // Actualizar fecha desde
+                      certificatesCL.dateFrom.value = newDate;
                     },
                     initialDate: controller.dateFrom.value,
                   ),
                   DatePicker(
                     label: "Fecha hasta",
                     onChanged: (newDate) {
-                      certificatesCL.dateTo.value =
-                          newDate; // Actualizar fecha desde
+                      certificatesCL.dateTo.value = newDate;
                     },
                     initialDate: controller.dateTo.value,
                   ),

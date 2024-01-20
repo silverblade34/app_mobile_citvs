@@ -21,8 +21,8 @@ class CertificatesController extends GetxController {
   @override
   void onInit() async {
     final currentDate = DateTime.now();
-    dateFrom.value = currentDate.toString();
-    dateTo.value = currentDate.toString();
+    dateFrom.value = currentDate.toString().split(" ")[0];
+    dateTo.value = currentDate.toString().split(" ")[0];
 
     final token = box.read("token");
     final campusData = await commonRepository.getDataCampus(token);
