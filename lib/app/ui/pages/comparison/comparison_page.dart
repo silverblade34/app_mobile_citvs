@@ -102,7 +102,7 @@ class ComparisonPage extends GetView<ComparisonController> {
                 const SizedBox(
                   height: 15,
                 ),
-                TableDynamic(data: controller.dataComparison, dataHeader: controller.dataHeaders)
+                TableDynamic(data: controller.dataComparison, dataHeader: controller.dataHeaders),
               ],
             ),
           ),

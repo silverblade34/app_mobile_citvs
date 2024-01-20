@@ -4,51 +4,59 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class TableDynamic extends StatelessWidget {
-  final List<Comparison> data;
-  final Rx<Header>  dataHeader;
+  final RxList<Comparison> data;
+  final Rx<Header> dataHeader;
   const TableDynamic({required this.data, required this.dataHeader, Key? key})
       : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Table(
-      border: TableBorder.all(color: const Color.fromARGB(77, 156, 156, 156)),
-      defaultVerticalAlignment: TableCellVerticalAlignment.middle,
-      children: [
-        TableRow(
-          decoration: const BoxDecoration(
-            color: Color.fromARGB(255, 112, 156, 201),
-          ),
-          children: [
-            buildTableCellHeader(dataHeader.value.monthName),
-            buildTableCellHeader(dataHeader.value.firstYear),
-            buildTableCellHeader(dataHeader.value.intermediateYear),
-            buildTableCellHeader(dataHeader.value.lastYear),
-          ],
-        ),
-        for (final rowData in data)
+    return Obx(() {
+      return Table(
+        border: TableBorder.all(color: const Color.fromARGB(77, 156, 156, 156)),
+        defaultVerticalAlignment: TableCellVerticalAlignment.middle,
+        columnWidths: const {
+          0: FixedColumnWidth(55.0),
+          1: FlexColumnWidth(150.0),
+          2: FlexColumnWidth(150.0),
+          3: FlexColumnWidth(150.0),
+        },
+        children: [
           TableRow(
+            decoration: const BoxDecoration(
+              color: Color.fromARGB(255, 112, 156, 201),
+            ),
             children: [
-              TableCell(
-                verticalAlignment: TableCellVerticalAlignment.middle,
-                child: Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Text(
-                    rowData.monthName,
-                    textAlign: TextAlign.start,
-                    style: const TextStyle(
-                      color: Color.fromARGB(255, 110, 110, 110),
+              buildTableCellHeader(dataHeader.value.monthName),
+              buildTableCellHeader(dataHeader.value.firstYear),
+              buildTableCellHeader(dataHeader.value.intermediateYear),
+              buildTableCellHeader(dataHeader.value.lastYear),
+            ],
+          ),
+          for (final rowData in data)
+            TableRow(
+              children: [
+                TableCell(
+                  verticalAlignment: TableCellVerticalAlignment.middle,
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Text(
+                      rowData.monthName,
+                      textAlign: TextAlign.start,
+                      style: const TextStyle(
+                        color: Color.fromARGB(255, 110, 110, 110),
+                      ),
                     ),
                   ),
                 ),
-              ),
-              buildTableCell('${rowData.firstYear}'),
-              buildTableCell('${rowData.intermediateYear}'),
-              buildTableCell('${rowData.lastYear}'),
-            ],
-          ),
-      ],
-    );
+                buildTableCell('${rowData.firstYear}'),
+                buildTableCell('${rowData.intermediateYear}'),
+                buildTableCell('${rowData.lastYear}'),
+              ],
+            ),
+        ],
+      );
+    });
   }
 
   TableCell buildTableCellHeader(String text) {

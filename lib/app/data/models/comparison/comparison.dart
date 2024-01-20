@@ -1,9 +1,8 @@
-
 class Comparison {
   String monthName;
-  double firstYear;
-  double intermediateYear;
-  double lastYear;
+  num firstYear;
+  num intermediateYear;
+  num lastYear;
 
   Comparison({
     required this.monthName,
