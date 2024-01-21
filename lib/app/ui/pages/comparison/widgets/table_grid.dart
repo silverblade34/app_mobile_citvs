@@ -28,20 +28,27 @@ class TableGrid extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Obx(
-      () => SfDataGridTheme(
-        data: SfDataGridThemeData(
-          headerColor: const Color.fromARGB(255, 112, 156, 201),
-        ),
-        child: SfDataGrid(
-          rowHeight: 35,
-          headerRowHeight: 35,
-          columnWidthMode: ColumnWidthMode.auto,
-          selectionMode: SelectionMode.none,
-          gridLinesVisibility: GridLinesVisibility.both,
-          headerGridLinesVisibility: GridLinesVisibility.both,
-          allowColumnsResizing: true,
-          source: ComparisonDataSource(dataSource, beforeValue.value),
-          columns: buildDynamicGridColumns(dataHeaders.value),
+      () => Container(
+        height: 500,
+        padding: const EdgeInsets.only(top: 10),
+        child: SfDataGridTheme(
+          data: SfDataGridThemeData(
+              headerColor: const Color.fromARGB(255, 112, 156, 201),
+              frozenPaneElevation: 0,
+              frozenPaneLineWidth: 1,
+              frozenPaneLineColor: Color.fromARGB(255, 163, 163, 163)),
+          child: SfDataGrid(
+            rowHeight: 35,
+            frozenColumnsCount: 1,
+            headerRowHeight: 35,
+            columnWidthMode: ColumnWidthMode.auto,
+            selectionMode: SelectionMode.none,
+            gridLinesVisibility: GridLinesVisibility.both,
+            headerGridLinesVisibility: GridLinesVisibility.both,
+            allowColumnsResizing: true,
+            source: ComparisonDataSource(dataSource, beforeValue.value),
+            columns: buildDynamicGridColumns(dataHeaders.value),
+          ),
         ),
       ),
     );
@@ -49,7 +56,7 @@ class TableGrid extends StatelessWidget {
 
   List<GridColumn> buildDynamicGridColumns(columnNames) => <GridColumn>[
         GridColumn(
-          width: 70,
+          width: 80,
           columnName: 'monthName',
           label: Container(
             alignment: Alignment.center,
@@ -71,9 +78,9 @@ class TableGrid extends StatelessWidget {
           ),
         ),
         GridColumn(
-          width: 100,
           columnWidthMode: ColumnWidthMode.auto,
           columnName: 'intermediateYear',
+          width: 110,
           label: Container(
             alignment: Alignment.center,
             child: Text(

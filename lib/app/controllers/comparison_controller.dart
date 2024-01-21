@@ -14,6 +14,7 @@ class ComparisonController extends GetxController {
   RxString valueCampusDropdown = RxString('0');
   RxString beforeValue = RxString('');
   RxString valueTypeComparison = RxString('0');
+  RxString valueTypeGraphic = RxString('TABLE');
   RxList<Comparison> dataComparison = <Comparison>[].obs;
   Rx<Header> dataHeaders = Header(
     monthName: '', // Proporciona valores iniciales adecuados
@@ -54,6 +55,26 @@ class ComparisonController extends GetxController {
     ],
   );
 
+  RxList<DropdownMenuItem<String>> itemsTypeGraphic =
+      RxList<DropdownMenuItem<String>>(
+    [
+      const DropdownMenuItem(
+        value: "CHART",
+        child: Text(
+          "GRAFICO",
+          textAlign: TextAlign.center,
+        ),
+      ),
+      const DropdownMenuItem(
+        value: "TABLE",
+        child: Text(
+          "TABLA",
+          textAlign: TextAlign.center,
+        ),
+      ),
+    ],
+  );
+
   @override
   void onReady() async {
     final token = box.read("token");
@@ -83,6 +104,7 @@ class ComparisonController extends GetxController {
     );
 
     itemsCampus.value = dynamicItems;
+    valueTypeGraphic.value = "TABLE";
     valueCampusDropdown.value = "0";
     valueTypeComparison.value = "0";
     beforeValue.value = "";

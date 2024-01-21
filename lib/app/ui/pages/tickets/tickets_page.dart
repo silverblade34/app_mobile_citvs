@@ -1,3 +1,4 @@
+import 'package:citvs/app/ui/pages/tickets/widgets/doughnut_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:citvs/app/ui/pages/widgets/button_filter.dart';
 import 'package:citvs/app/controllers/tickets_controller.dart';
@@ -73,32 +74,35 @@ class TicketsPage extends GetView<TicketsController> {
                   await controller.doSearch();
                 }),
                 const SizedBox(
-                  height: 25,
+                  height: 5,
                 ),
-                Container(
-                  padding: const EdgeInsets.only(left: 20, right: 20),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment
-                        .spaceBetween, // Justifica entre los elementos
-                    children: [
-                      CardTicket(
-                        title: 'Boletas Emitidas',
-                        value: controller.ballotsIssued,
-                        backgroundColor:
-                            const Color.fromARGB(255, 112, 156, 201),
-                      ),
-                      CardTicket(
-                        title: 'Facturas Emitidas',
-                        value: controller.issuedInvoices,
-                        backgroundColor:
-                            const Color.fromARGB(255, 139, 204, 212),
-                      ),
-                    ],
-                  ),
+                // Container(
+                //   padding: const EdgeInsets.only(left: 20, right: 20),
+                //   child: Row(
+                //     mainAxisAlignment: MainAxisAlignment
+                //         .spaceBetween, // Justifica entre los elementos
+                //     children: [
+                //       CardTicket(
+                //         title: 'Boletas Emitidas',
+                //         value: controller.ballotsIssued,
+                //         backgroundColor:
+                //             const Color.fromARGB(255, 112, 156, 201),
+                //       ),
+                //       CardTicket(
+                //         title: 'Facturas Emitidas',
+                //         value: controller.issuedInvoices,
+                //         backgroundColor:
+                //             const Color.fromARGB(255, 139, 204, 212),
+                //       ),
+                //     ],
+                //   ),
+                // ),
+                DoughnutChart(
+                  numberOfInvoices: controller.issuedInvoices,
+                  numberOfTickets: controller.ballotsIssued,
                 ),
                 Container(
                   alignment: Alignment.center,
-                  padding: const EdgeInsets.only(top: 15.0),
                   child: Obx(
                     () => Column(
                       children: [
@@ -112,8 +116,8 @@ class TicketsPage extends GetView<TicketsController> {
                           ),
                         ),
                         Container(
-                          width: 220,
-                          height: 60,
+                          width: 200,
+                          height: 50,
                           decoration: BoxDecoration(
                             color: const Color.fromARGB(255, 122, 177,
                                 124), // Color de fondo del "botón"
@@ -133,7 +137,7 @@ class TicketsPage extends GetView<TicketsController> {
                               Text(
                                 'S/. ${controller.totalProffit.value}', // Coloca el valor dinámico aquí
                                 style: const TextStyle(
-                                  fontSize: 20,
+                                  fontSize: 18,
                                   color: Colors.white,
                                 ),
                               ),

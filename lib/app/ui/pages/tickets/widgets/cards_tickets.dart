@@ -32,9 +32,9 @@ class CardTicket extends StatelessWidget {
             ),
             Container(
               alignment: Alignment.center,
-              height: 60,
+              height: 35,
               decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(8),
+                borderRadius: BorderRadius.circular(5),
                 border: Border.all(
                   color: backgroundColor,
                   width: 1,
@@ -44,9 +44,8 @@ class CardTicket extends StatelessWidget {
                 () => Text(
                   '${value.value}',
                   style: const TextStyle(
-                    fontSize: 20,
+                    fontSize: 18,
                     color: Color.fromARGB(255, 110, 110, 110),
-                    fontWeight: FontWeight.bold,
                   ),
                 ),
               ),

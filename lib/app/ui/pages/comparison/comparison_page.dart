@@ -1,4 +1,6 @@
+import 'package:citvs/app/ui/pages/comparison/widgets/single_choice.dart';
 import 'package:citvs/app/ui/pages/comparison/widgets/table_grid.dart';
+import 'package:citvs/app/ui/pages/comparison/widgets/bar_multiple_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:citvs/app/ui/pages/widgets/button_filter.dart';
 import 'package:citvs/app/controllers/comparison_controller.dart';
@@ -98,13 +100,35 @@ class ComparisonPage extends GetView<ComparisonController> {
                   await controller.doSearch();
                 }),
                 const SizedBox(
-                  height: 15,
+                  height: 10,
                 ),
-                TableGrid(
-                  dataSource: controller.dataComparison,
-                  dataHeaders: controller.dataHeaders,
-                  beforeValue: controller.beforeValue,
-                )
+                SingleChoice(onChanged: (selectedValue) {
+                  controller.valueTypeGraphic.value = selectedValue;
+                }),
+                Obx(
+                  () {
+                    String selectedValue = controller.valueTypeGraphic.value;
+
+                    if (selectedValue == "TABLE") {
+                      return TableGrid(
+                        dataSource: controller.dataComparison,
+                        dataHeaders: controller.dataHeaders,
+                        beforeValue: controller.beforeValue,
+                      );
+                    } else if (selectedValue == "CHART") {
+                      return SizedBox(
+                        height: 550,
+                        child: BarChartMultipleAxes(
+                          dataHeaders: controller.dataHeaders,
+                          dataSource: controller.dataComparison,
+                        ),
+                      );
+                    } else {
+                      // En caso de que no sea "TABLE" ni "CHART", puedes mostrar otro widget o dejarlo en blanco.
+                      return Container();
+                    }
+                  },
+                ),
               ],
             ),
           ),
