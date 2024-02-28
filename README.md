@@ -52,7 +52,7 @@ El proyecto puede requerir algunas variables de entorno para funcionar correctam
 ---
 
 # Capturas de Pantalla
-![Presentación](https://drive.google.com/uc?export=view&id=1Sgjk0tjhKB5JVVPjFdrCz5vV9ikqVU50) 
+![Presentación](https://drive.google.com/uc?export=view&id=1KQrQRwpkKezYPLs520flnhqfxoU2Nj_z) 
 
 ---
 # Contacto
