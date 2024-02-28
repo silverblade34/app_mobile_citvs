@@ -60,8 +60,8 @@ El proyecto puede requerir algunas variables de entorno para funcionar correctam
 Si tienes preguntas, encuentras problemas o estás interesado en colaborar, no dudes en ponerte en contacto. Estamos aquí para ayudar y mejorar CITVS juntos.
 
 - **Correo Electrónico:** [mpacheco.tacay@gmail.com](mailto:mpacheco.tacay@gmail.com)
-- **LinkedIn:** [Tu Nombre](https://www.linkedin.com/in/marcos-pacheco-tacay-674206249/)
-- **Sitio Web:** [www.tusitio.com](https://silverblade34.github.io/portfolio_website/)
+- **LinkedIn:** [Marcos Pacheco](https://www.linkedin.com/in/marcos-pacheco-tacay-674206249/)
+- **Sitio Web:** [https://silverblade34.github.io/portfolio_website/](https://silverblade34.github.io/portfolio_website/)
 
 ¡Espero escucharte pronto!
 
